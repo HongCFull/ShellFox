@@ -11,24 +11,29 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
 
     private CharacterController controller;
-
-    
+    Camera mainCam;
     private Vector3 jumpVelocity ;
     private Vector3 moveDirection;
     private bool isGrounded = true;
     private float distanceToGround;
+    private float turnspeed = 15;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        mainCam=Camera.main;
+        Cursor.visible=false;
+        Cursor.lockState=CursorLockMode.Locked;
     }
 
     void Update()
     {
+        JumpHandle();
         Move();
+
     }
 
-    private float dampAngle;    //for damping angle function
-    void Move(){
+    void JumpHandle(){
         distanceToGround= controller.height/2 +0.1f;
         isGrounded=Physics.CheckSphere(transform.position,distanceToGround,groundMask);
 
@@ -40,21 +45,23 @@ public class PlayerMovement : MonoBehaviour
             jumpVelocity.y = Mathf.Sqrt(jumpHeight*-2*gravity);
         }
 
-        float z = Input.GetAxis("Vertical");
-        float x = Input.GetAxis("Horizontal");
-        moveDirection= new Vector3(x,0,z);
-        moveDirection*=speed;
-        controller.Move(moveDirection*Time.deltaTime);
-
-//change player's head
-        float smoothTime =0.1f;
-        if(moveDirection.magnitude>=0.1f){
-            float targetAngle = Mathf.Atan2(moveDirection.x,moveDirection.z) *Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y,targetAngle,ref dampAngle,smoothTime);
-            transform.rotation = Quaternion.Euler(0,angle,0);
-        }
-
         jumpVelocity.y+=gravity*Time.deltaTime;
         controller.Move(jumpVelocity*Time.deltaTime);
+    }
+
+    void Move(){
+    //change player's head
+        float yawCamera=mainCam.transform.rotation.eulerAngles.y;
+        transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0,yawCamera,0)
+        ,turnspeed*Time.deltaTime);
+        
+    //Player wasd movement 
+        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+       // moveDirection= new Vector3(x,0,z);
+        //moveDirection*=speed;
+        controller.Move(transform.forward*speed*vertical*Time.deltaTime);
+        controller.Move(transform.right*speed*horizontal*Time.deltaTime);
+
     }
 }
