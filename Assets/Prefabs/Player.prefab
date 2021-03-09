@@ -164,8 +164,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  gravity: -9.81
-  jumpHeight: 1.5
+  gravity: -30
+  jumpHeight: 4
   groundMask:
     serializedVersion: 2
     m_Bits: 64

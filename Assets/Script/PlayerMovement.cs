@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 200f;   
-    [SerializeField] float gravity =-9.81f;
-    [SerializeField] float jumpHeight = 10;
-
-    [SerializeField] private LayerMask groundMask;
-
+    //for player wasd movement
+    [SerializeField] float speed = 20f;   
     private CharacterController controller;
+
+    //for camera perspective control
     Camera mainCam;
-    private Vector3 jumpVelocity ;
     private Vector3 moveDirection;
-    private bool isGrounded = true;
-    private float distanceToGround;
     private float turnspeed = 15;
 
-    void Start()
-    {
+    //for jump handling
+    [SerializeField] float gravity =-9.81f;
+    [SerializeField] float jumpHeight = 10;
+    [SerializeField] private LayerMask groundMask;
+    private Vector3 jumpVelocity ;
+    private bool isGrounded = true;
+    private float distanceToGround;
+
+    void Start(){
         controller = GetComponent<CharacterController>();
+       // SetCamera();
+    }
+
+    void Update(){
+       // JumpHandle();
+        Move();
+    }
+
+    void SetCamera(){
         mainCam=Camera.main;
         Cursor.visible=false;
         Cursor.lockState=CursorLockMode.Locked;
-    }
-
-    void Update()
-    {
-        JumpHandle();
-        Move();
-
     }
 
     void JumpHandle(){
@@ -50,18 +54,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Move(){
-    //change player's head
-        float yawCamera=mainCam.transform.rotation.eulerAngles.y;
-        transform.rotation = Quaternion.Slerp(transform.rotation,Quaternion.Euler(0,yawCamera,0)
-        ,turnspeed*Time.deltaTime);
-        
     //Player wasd movement 
+    
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
-       // moveDirection= new Vector3(x,0,z);
-        //moveDirection*=speed;
         controller.Move(transform.forward*speed*vertical*Time.deltaTime);
         controller.Move(transform.right*speed*horizontal*Time.deltaTime);
 
+        JumpHandle();
     }
 }
