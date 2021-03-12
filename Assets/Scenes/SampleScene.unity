@@ -880,6 +880,47 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1375275956}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1413486203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4009130562645249736, guid: edf490932e409634eb594b5865ad1d10,
+    type: 3}
+  m_PrefabInstance: {fileID: 1851287536387109359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1413486207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413486203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b08485adca38414e8f1280ef3bebc80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHp: 10
+  playerAttack: 2
+  playerEnergy: 1
+  playertype: 1
+--- !u!114 &1413486208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413486203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da41af2b07d0c074a94e0889a507d521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  accelerationFactor: 2
+  gravity: -9.81
+  jumpHeight: 2
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1426590745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,6 +1067,7 @@ GameObject:
   - component: {fileID: 1571144039}
   - component: {fileID: 1571144038}
   - component: {fileID: 1571144037}
+  - component: {fileID: 1571144041}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: Untagged
@@ -1048,6 +1090,8 @@ MonoBehaviour:
   RotationSpeed: 1
   Target: {fileID: 1226091927}
   Player: {fileID: 1747668854}
+  mouseX: 0
+  mouseY: 0
 --- !u!81 &1571144038
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1112,6 +1156,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1226091927}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1571144041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571144036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19bc9f11011eb1442ac35515b2a964cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotationSpeed: 1
+  Target: {fileID: 1226091927}
+  Player: {fileID: 1747668854}
+--- !u!1 &1578775352
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1578775354}
+  - component: {fileID: 1578775353}
+  m_Layer: 0
+  m_Name: Battle System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1578775353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578775352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b5b6cf6d2fb75e449800050f0d6ee9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1578775354
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1578775352}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.022152, y: 4.0650005, z: -3.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1664243969
 GameObject:
@@ -1325,6 +1427,22 @@ MonoBehaviour:
   alertArea: 10.82
   attackArea: 3
   resetTime: 5
+--- !u!114 &1733265233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733265226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a303b341fc0c2e4181e5da3dda61fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHp: 10
+  enemyAttack: 1
+  enemyEnergy: 2
+  enemyType: 0
 --- !u!4 &1747668854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8229672098405162454, guid: edf490932e409634eb594b5865ad1d10,
