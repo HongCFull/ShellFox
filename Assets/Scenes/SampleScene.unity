@@ -1322,7 +1322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 1747668854}
+  alertArea: 10.82
   attackArea: 3
+  resetTime: 5
 --- !u!4 &1747668854 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8229672098405162454, guid: edf490932e409634eb594b5865ad1d10,
@@ -1495,6 +1497,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4009130562645249736, guid: edf490932e409634eb594b5865ad1d10,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6167378495127450329, guid: edf490932e409634eb594b5865ad1d10,
         type: 3}
