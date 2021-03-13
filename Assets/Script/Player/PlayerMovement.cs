@@ -10,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     CharacterController controller;
 
     //for camera perspective control
-    //Camera mainCam;
     Vector3 moveDirection;
     float turnspeed = 15;
 
@@ -34,11 +33,6 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
 
-    void SetCamera(){
-       // mainCam=Camera.main;
-        Cursor.visible=false;
-        Cursor.lockState=CursorLockMode.Locked;
-    }
 
     void OnControllerColliderHit(ControllerColliderHit other) { //called back when the character controller's "collider" hit something 
         if(Physics.Raycast(transform.position,Vector3.up,GetComponent<CharacterController>().height/2+0.1f))    //note that we only checked the center of the head(instead of the whole head)
@@ -67,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
         //check if head is hitted by something
         if(headHitSomething&& jumpVelocity.y>0){
-            Debug.Log("Hitted something");
+           // Debug.Log("Hitted something");
             jumpVelocity.y=0;   
         }
 
@@ -87,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 leftRightVelocity = transform.right*speed*horizontal*Time.deltaTime;
 
         if(Input.GetKey(KeyCode.LeftShift)){   //allow player to accelerate by holding left shift when it is grounded
-            Debug.Log("accelerating");
+            //Debug.Log("accelerating");
             fowardVelocity*= accelerationFactor;
             leftRightVelocity*= accelerationFactor;
            

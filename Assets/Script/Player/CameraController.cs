@@ -20,7 +20,7 @@ public class CameraController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void LateUpdate()       //camera should be update after the player movement is updated 
     {
         CameraControl();
     }

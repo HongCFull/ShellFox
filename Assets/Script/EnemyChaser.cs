@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class EnemyChaser : MonoBehaviour
 {
-    enum EnemyState{ };
 
     //for chasing player
     [SerializeField] Transform Player;      //the target that AI will keep chasing for
@@ -15,8 +14,8 @@ public class EnemyChaser : MonoBehaviour
 
     UnityEngine.AI.NavMeshAgent navMesh;
     Vector3 distanceToPlayer;
-    bool isChasingPlayer;
-    float nonHatredTime=0; //how much time the player is away from monster's hatred state
+    bool isChasingPlayer=false;
+    float nonHatredTime=0; //how much time the player is away from monster's hatred 
 
     //for time checking
     [SerializeField]float resetTime =5f;    //record how much time is used for dispatching the hatred of player
@@ -40,22 +39,39 @@ public class EnemyChaser : MonoBehaviour
 //Runtime Function
     void Update()
     {
+        UpdateDistanceToPlayer();
         UpdatingEnemyState();
         ChasePlayer();
 
     }
 
-    void UpdatingEnemyState(){
-        // calculate if monster should chase the player
-        distanceToPlayer= transform.position - Player.position;     
-        if(distanceToPlayer.magnitude <= alertArea ){   //player is in the alert region 
-            isChasingPlayer=true;
-            nonHatredTime=0f;       //reset time counter
-        }
-        else{
-            //Debug.Log("wanna go back now");    
+    bool IsFacingTowardsPlayer(){
+        Vector3 EnemyFoward = transform.forward;
+        return Vector3.Dot(EnemyFoward,distanceToPlayer)>0; //return true if facing towards player
+    }
 
-            nonHatredTime+=Time.deltaTime;
+    bool IsInsideAlertRegion(){
+        return distanceToPlayer.magnitude <= alertArea;
+    }
+
+    void UpdateDistanceToPlayer(){
+        distanceToPlayer=  Player.position-transform.position ;   
+    }
+
+    void UpdatingEnemyState(){
+
+        if(  isChasingPlayer||     //monster was chasing player
+            IsInsideAlertRegion()  &&  IsFacingTowardsPlayer() ){   //player is in the alert region & enemy is facing towards the player 
+
+            isChasingPlayer=true;
+           // nonHatredTime=0f;       //reset time counter
+        }
+    
+        if( !IsInsideAlertRegion() ){
+            //Debug.Log("wanna go back now");    
+            if(isChasingPlayer)
+                nonHatredTime+=Time.deltaTime;
+            
             if(nonHatredTime > resetTime){  //the enemy is no longer interested in chasing the player
                 isChasingPlayer=false;
                 nonHatredTime=0f;   //reset time counter
