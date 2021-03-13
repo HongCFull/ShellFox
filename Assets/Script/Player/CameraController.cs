@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField][Range(0,-90)] float minAngle;
+    [SerializeField][Range(0,90)]  float maxAngle;
+
     public float RotationSpeed = 1;
     public Transform Target, Player;
     float mouseX,mouseY;
@@ -26,7 +29,7 @@ public class CameraController : MonoBehaviour
     void CameraControl(){
         mouseX +=Input.GetAxis("Mouse X") *RotationSpeed;
         mouseY +=Input.GetAxis("Mouse Y") *RotationSpeed;
-        mouseY = Mathf.Clamp(mouseY,-35,60);         //restrict the mouseY (up/down dependent) to specified range 
+        mouseY = Mathf.Clamp(mouseY,minAngle,maxAngle);         //restrict the mouseY (up/down dependent) to specified range 
 
         transform.LookAt(Target);
         //Target.transform.position.x +=2.5;
