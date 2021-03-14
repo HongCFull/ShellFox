@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField][Range(0,-90)] float minAngle =-45;
     [SerializeField][Range(0,90)]  float maxAngle=45;
 
-    public float RotationSpeed = 1;
+    public float RotationSpeed = 100;
     public Transform Target, Player;
     float mouseX,mouseY;
 

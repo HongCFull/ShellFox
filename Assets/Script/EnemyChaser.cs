@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class EnemyChaser : MonoBehaviour
 {
+    public EnemyAttributes enemyAttributes;
 
     //for chasing player
     [SerializeField] Transform Player;      //the target that AI will keep chasing for
     [SerializeField]float alertArea=10f;
+    [SerializeField]float battleTriggerArea = 10f;
     [SerializeField]float attackArea =3f;
 
     UnityEngine.AI.NavMeshAgent navMesh;
@@ -27,7 +29,12 @@ public class EnemyChaser : MonoBehaviour
 //initialization
     void Start()
     {
+        GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyAttributes.enemySpeed;
         navMesh=GetComponent<UnityEngine.AI.NavMeshAgent>();
+
+        alertArea = enemyAttributes.alertArea;
+        battleTriggerArea = enemyAttributes.battleTriggerArea;
+        attackArea = enemyAttributes.attackArea;
         SaveOriginalPosition(); 
         
     }
@@ -61,22 +68,48 @@ public class EnemyChaser : MonoBehaviour
     void UpdatingEnemyState(){
 
         if(  isChasingPlayer||     //monster was chasing player
-            IsInsideAlertRegion()  &&  IsFacingTowardsPlayer() ){   //player is in the alert region & enemy is facing towards the player 
+            IsInsideAlertRegion()  &&  IsFacingTowardsPlayer() && enemyAttributes.enemyBA.canMove){   //player is in the alert region & enemy is facing towards the player 
 
             isChasingPlayer=true;
+            enemyAttributes.enemyBA.isIdle = false;
            // nonHatredTime=0f;       //reset time counter
         }
     
-        if( !IsInsideAlertRegion() ){
-            //Debug.Log("wanna go back now");    
-            if(isChasingPlayer)
-                nonHatredTime+=Time.deltaTime;
-            
-            if(nonHatredTime > resetTime){  //the enemy is no longer interested in chasing the player
-                isChasingPlayer=false;
-                nonHatredTime=0f;   //reset time counter
+        if (distanceToPlayer.magnitude <= battleTriggerArea) {
+            enemyAttributes.enemyBA.inBattle = true;
+        }
+
+        if (enemyAttributes.enemyBA.inBattle) {
+            if (enemyAttributes.enemyBA.canMove) {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyAttributes.enemySpeed;
+            } else {
+                GetComponent<UnityEngine.AI.NavMeshAgent>().speed = 0f;
+                if (!IsInsideAlertRegion()) {
+                    nonHatredTime+=Time.deltaTime;
+                    if(nonHatredTime > resetTime) {  //the enemy is no longer interested in chasing the player
+                        isChasingPlayer=false;
+                        enemyAttributes.enemyBA.inBattle = false;
+                        nonHatredTime=0f;   //reset time counter
+                    }
+                } else {
+                    enemyAttributes.enemyBA.isIdle = true;
+                    enemyAttributes.enemyBA.healthBar.gameObject.SetActive(false);
+                    enemyAttributes.enemyBA.energyBar.gameObject.SetActive(false);
+                }
+            }
+        } else {
+            GetComponent<UnityEngine.AI.NavMeshAgent>().speed = enemyAttributes.enemySpeed;
+            if(!IsInsideAlertRegion()) {
+                if (isChasingPlayer) {
+                    nonHatredTime+=Time.deltaTime;
+                    if(nonHatredTime > resetTime) {  //the enemy is no longer interested in chasing the player
+                        isChasingPlayer=false;
+                        nonHatredTime=0f;   //reset time counter
+                    }
+                }
             }
         }
+
 
     }
 
@@ -86,6 +119,7 @@ public class EnemyChaser : MonoBehaviour
             navMesh.destination=Player.position;
             if(distanceToPlayer.magnitude <=attackArea){        //stop and attack
                 navMesh.destination=transform.position;
+                enemyAttributes.enemyBA.isIdle = true;
             }
         }
         //go back to spawn point if it have chosen not to chase the player 

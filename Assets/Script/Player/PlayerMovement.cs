@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public PlayerAttributes attributes;
+    
     //for player wasd movement
     [SerializeField] float speed = 20f;   
     [SerializeField] float accelerationFactor = 2f;
@@ -41,6 +43,15 @@ public class PlayerMovement : MonoBehaviour
 
     RaycastHit temp;       //an object being returned after ray cast
     void JumpHandle(){
+        if (attributes.playerBA.inBattle) {
+            if (attributes.playerBA.canMove) {
+                jumpHeight = attributes.playerJumpHeight;
+            } else {
+                jumpHeight = 0f;
+            }
+        } else {
+            jumpHeight = attributes.playerJumpHeight;
+        }
         distanceToGround= controller.height/2 +0.1f;
         Vector3 origin = new Vector3(
             transform.position.x,
@@ -73,7 +84,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(){
     //Player wasd movement 
-    
+        if (attributes.playerBA.inBattle) {
+            if (attributes.playerBA.canMove) {
+                speed = attributes.playerSpeed;
+            } else {
+                speed = 0f;
+            }
+        } else {
+            speed = attributes.playerSpeed;
+        }
+
         float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
 
@@ -82,9 +102,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetKey(KeyCode.LeftShift)){   //allow player to accelerate by holding left shift when it is grounded
             //Debug.Log("accelerating");
+            attributes.playerBA.isAccel = true;
             fowardVelocity*= accelerationFactor;
             leftRightVelocity*= accelerationFactor;
            
+        } else {
+            attributes.playerBA.isAccel = false;
         }
         controller.Move(fowardVelocity);
         controller.Move(leftRightVelocity);

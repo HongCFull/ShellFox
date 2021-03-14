@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class BattleType : MonoBehaviour
 {
-    public enum Type{FIRE,WATER,GRASS}
+    public enum Element{FIRE,WATER,GRASS}
 
 }
