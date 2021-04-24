@@ -320,7 +320,7 @@ public class RandomGeneration : MonoBehaviour
     //visualize the grid
     
 /*
-    private void OnDrawGizmos() {
+private void OnDrawGizmos() {
          for(int z=0 ; z<gridNumberZ ; z++){
             for(int x=0 ; x<gridNumberX ; x++){ 
                // Vector3 gridCenter = new Vector3( grids[x,z].worldCoordinateX + girdSizeX/2 , 0, grids[x,z].worldCoordinateZ + girdSizeZ/2);
@@ -330,6 +330,6 @@ public class RandomGeneration : MonoBehaviour
             }
         }
     }
-
 */
+
 }
