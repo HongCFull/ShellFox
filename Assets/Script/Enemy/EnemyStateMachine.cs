@@ -59,6 +59,10 @@ public class EnemyStateMachine : MonoBehaviour
     //Generic SceneHandler
     private SceneHandler sceneHandler;
     private BattleHandler battleHandler;
+
+    //debugging method for built game
+    private float activeTriggerBuffer = 0.3f;  //after loading main scene , wait for this time to trigger battle
+    private float triggerAccumulator;
 //initialization
  
     void SetInitialData(){
@@ -72,6 +76,8 @@ public class EnemyStateMachine : MonoBehaviour
         randAccumulator_BattleScene=0f;
         canRandomWander=false;
         randWanderExited=true;
+        triggerAccumulator = 0f; 
+
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
        
@@ -89,7 +95,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    void Awake()
+    void Start()
     {
         SetInitialData();
         ReAssignDependencies();
@@ -114,6 +120,7 @@ public class EnemyStateMachine : MonoBehaviour
     
 //Runtime Function
     void Update(){   
+        triggerAccumulator+=Time.deltaTime;
         UpdatingEnemyState();
         if(haveSeenPlayerOnce || sceneHandler.IsInBattleScene()){  //for optimization
             UpdateDistanceToPlayer();
@@ -161,7 +168,8 @@ public class EnemyStateMachine : MonoBehaviour
     //in battle scene , set enemy collider to !(trigger only)  
     
     private void OnTriggerEnter(Collider other) {
-        if(other.gameObject.tag == "Player" && sceneHandler.IsInMainScene()){
+        if(other.gameObject.tag == "Player" && sceneHandler.IsInMainScene()&& triggerAccumulator>=activeTriggerBuffer){
+            triggerAccumulator = 0f;
             SetEnemyIsInBattleState(); 
             AssignEnemyAttributeToBattleManager();
             GetComponent<CapsuleCollider>().isTrigger = false;

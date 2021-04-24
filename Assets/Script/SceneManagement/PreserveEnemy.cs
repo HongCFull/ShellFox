@@ -22,6 +22,7 @@ public class PreserveEnemy : MonoBehaviour
             sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
             battleManager= GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
             //Debug.Log("reasiggned");
+            
             foreach (string name in battleManager.DefeatedEnemyNameList){
                 if(name == gameObject.name){
                     //shouldnt spawn this enemy now 
