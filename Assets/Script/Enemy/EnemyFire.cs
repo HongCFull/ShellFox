@@ -6,12 +6,12 @@ public class EnemyFire : MonoBehaviour
 {
     [SerializeField] BattleHandler BattleManager;
     public Transform bulletStartPos;
-
+    [Tooltip("This indicate the height of the position that hit the player")]
+    public float aimHeightOffset;   
     // reference to the chosen skill for choosing the gameEffect object 
     private EnemyAttributes enemy;  //used to get the chosen battle skill
 
     private GameObject effectToSpawn;
-
     
 
     // Start is called before the first frame update

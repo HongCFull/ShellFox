@@ -20,6 +20,11 @@ public abstract class BattleSkill : MonoBehaviour
         currentlyAvailable=true;
     }
 
+    private void Start() {
+        Debug.Log("Assigned");
+        EffectToSpawn.gameObject.transform.localScale=new Vector3(0.5f,0.5f,0.5f);    
+    }
+
     public abstract BattleType.Element GetAttackElementType();
     public abstract float GetSkillPower();
     public abstract float GetAttackEnergyCost();

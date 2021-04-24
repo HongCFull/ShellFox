@@ -189,10 +189,9 @@ public class EnemyStateMachine : MonoBehaviour
             }
         }
         else if(sceneHandler.IsInBattleScene()){   //BattleScene StateMachine
-            //IF BOTH VARIABLES ARE FALSE WILL RESULT IN DEADLOCK, BUT I HAVE NO IDEA WHY
-            //TEMP SOLUTION : HARDCODE ONE OF THE VARIABLE TO TRUE!  
+            //IF BOTH VARIABLES ARE FALSE WILL RESULT IN DEADLOCK, BUT I HAVE NO IDEA WHAT CAUSES IT
+            //TEMP SOLUTION : HARDCODE ONE OF THE VARIABLE TO BE TRUE!  
             if(!randWanderExited&&!canRandomWander) {
-               // StopCoroutine(RandomWanderingCo);
                 randWanderExited=true;
             }
 
@@ -262,9 +261,9 @@ public class EnemyStateMachine : MonoBehaviour
         wanderRadius = Mathf.Max(0,wanderRadius);  //clamp it to positive
 
         Vector3 randomDir = Random.insideUnitSphere * wanderRadius;
-        randomDir = (randomDir+Player.position);
+        Vector3 randPos = (randomDir+Player.position);
         NavMeshHit hit;
-        NavMesh.SamplePosition(randomDir, out hit,enemyAttributes.attackArea,1);
+        NavMesh.SamplePosition(randPos, out hit,enemyAttributes.attackArea,1);
         return hit.position;
     }
 
@@ -273,16 +272,6 @@ public class EnemyStateMachine : MonoBehaviour
         while(!HaveReachedPos(targetPos) && enemyAttributes.canMove ){ //get out of the loop if reached pos or enemy have no energy
             EnemyAgent.SetDestination(targetPos);
             randAccumulator_BattleScene=0;  //dont contribute to randAccumulator during walking
-            yield return null;
-        }
-
-        //face toward player
-        Quaternion q = Quaternion.LookRotation(Player.position - transform.position);
-        float accumulator =0f;
-        while(Vector3.Angle(transform.rotation*transform.forward , q*transform.forward)>5f || accumulator<2f){  //the accumulator prevent it comes to an infinite loop
-            accumulator+=Time.deltaTime;
-            transform.rotation = Quaternion.Slerp(transform.rotation, q, headTurningSpeed * Time.deltaTime);  // the last parameter is the head turning angular speed 
-            randAccumulator_BattleScene=0;  //dont contribute to randAccumulator during turning angle
             yield return null;
         }
         randWanderExited=true;

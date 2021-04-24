@@ -848,6 +848,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1231780392}
     - target: {fileID: 781177697, guid: edf490932e409634eb594b5865ad1d10, type: 3}
+      propertyPath: attack
+      value: 163
+      objectReference: {fileID: 0}
+    - target: {fileID: 781177697, guid: edf490932e409634eb594b5865ad1d10, type: 3}
       propertyPath: energyBar
       value: 
       objectReference: {fileID: 857266370}
@@ -855,6 +859,10 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 449246056}
+    - target: {fileID: 781177697, guid: edf490932e409634eb594b5865ad1d10, type: 3}
+      propertyPath: maxEnergy
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 781177697, guid: edf490932e409634eb594b5865ad1d10, type: 3}
       propertyPath: battleManager
       value: 
@@ -1302,6 +1310,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4621181083111491283, guid: 5574021f4213405468b00740b1db6cfe,
         type: 3}
+      propertyPath: Lv
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4621181083111491283, guid: 5574021f4213405468b00740b1db6cfe,
+        type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 2068212454}
@@ -1355,6 +1368,11 @@ PrefabInstance:
       propertyPath: BattleManager
       value: 
       objectReference: {fileID: 2068212454}
+    - target: {fileID: 4621181083822585597, guid: 5574021f4213405468b00740b1db6cfe,
+        type: 3}
+      propertyPath: aimHeightOffset
+      value: 0.54
+      objectReference: {fileID: 0}
     - target: {fileID: 4621181084710264552, guid: 5574021f4213405468b00740b1db6cfe,
         type: 3}
       propertyPath: Player
@@ -1476,6 +1494,11 @@ PrefabInstance:
       objectReference: {fileID: 1231780392}
     - target: {fileID: 6354748910351440232, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
+      propertyPath: Lv
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354748910351440232, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 2068212454}
@@ -1509,6 +1532,11 @@ PrefabInstance:
       propertyPath: BattleManager
       value: 
       objectReference: {fileID: 2068212454}
+    - target: {fileID: 6354748910718560582, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
+      propertyPath: aimHeightOffset
+      value: 0.67
+      objectReference: {fileID: 0}
     - target: {fileID: 6354748910796356107, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1524,6 +1552,16 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1747668854}
+    - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
+      propertyPath: eyeRayWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
+      propertyPath: objects.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: objects.Array.data[0]

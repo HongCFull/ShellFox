@@ -80,6 +80,7 @@ public class PlayerMovement : MonoBehaviour
 
     void MovementVer2(){
         //grounded reset
+        if(!playerAttribute.canMove)    return;
         if(controller.isGrounded && velocity.y < 0){
             velocity.y = -2f;
             headHitSomething=false; //reset 

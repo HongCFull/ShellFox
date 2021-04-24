@@ -24,6 +24,9 @@ public class EnemyVision : MonoBehaviour
     public float ConeRadius;
     public int segments = 10;
 
+    [Tooltip("We use 3 eye ray (left mid right) to check if the enemy can see the player")]
+    [Range(0,1f)]
+    public float eyeRayWidth;
 
     public Color meshColor = Color.red;
     Mesh mesh;
@@ -58,6 +61,13 @@ public class EnemyVision : MonoBehaviour
     
     public bool CanSee(GameObject obj){
         Vector3 origin = transform.position;
+
+        Vector3 originLeft = transform.position;
+        originLeft.x-=eyeRayWidth;      // TEMPORARYLY indicates left right
+
+        Vector3 originRight = transform.position;
+        originRight.x += eyeRayWidth;
+
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest- origin;
         
@@ -73,13 +83,19 @@ public class EnemyVision : MonoBehaviour
             }
 
             dest.y = origin.y;  // check in the horizontal level of the eye
-            if(Physics.Linecast(origin, dest, occlusionLayer) || (dest-origin).magnitude>ConeRadius){
+            if((dest-origin).magnitude>ConeRadius ||
+                Physics.Linecast(origin, dest, occlusionLayer) ||       //if pass 3 eye ray check (left mid right) , then enemy can see the player
+                Physics.Linecast(originLeft, dest, occlusionLayer) ||
+                Physics.Linecast(originRight, dest, occlusionLayer) ){
+
                 return false;
             }
             return true;
         }
         
     }
+
+    
 
 
     //create Vision cone by geometry verticies
