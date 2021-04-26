@@ -102,22 +102,22 @@ public class PlayerMovement : MonoBehaviour
 
         //update animation
         if (movement.x + movement.z == 0) {
-            ani.SetFloat("Speed", 0.0f);
+            ani.SetFloat("Speed", 0.0f,0.15f,Time.deltaTime);
         } else {
-            ani.SetFloat("Speed", 0.5f);
+            ani.SetFloat("Speed", 0.5f,0.15f,Time.deltaTime);
         }
 
         if(Input.GetKey(KeyCode.LeftShift)){   //allow player to accelerate by holding left shift when it is grounded
             //Debug.Log("accelerating");
             playerAttribute.isAccel = true;
             movement*= runMultiplier;
-            ani.SetFloat("Speed", 1.0f);
+            ani.SetFloat("Speed", 1.0f,0.15f,Time.deltaTime);
         } else {
             playerAttribute.isAccel = false;
             if (movement.x + movement.z == 0) {
-                ani.SetFloat("Speed", 0.0f);
+                ani.SetFloat("Speed", 0.0f,0.15f,Time.deltaTime);
             } else {
-                ani.SetFloat("Speed", 0.5f);
+                ani.SetFloat("Speed", 0.5f,0.15f,Time.deltaTime);
             }
         }
         controller.Move(movement * movementSpeed * Time.deltaTime);
