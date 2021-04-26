@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerAttributes playerAttribute;
+    public PlayerAiming aim;
     
     //for player wasd movement
     CharacterController controller;
@@ -25,6 +26,10 @@ public class PlayerMovement : MonoBehaviour
     float orignialGravity;
     float originalJumpSpeed;
 
+    //for animation
+    public bool enterJump;
+    public Animator ani;
+
 //for initialization
 
     void RecordOriginalAttribute(){
@@ -36,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Start(){
         controller = GetComponent<CharacterController>();
+        ani = GetComponentInChildren<Animator>();
+        aim = GetComponent<PlayerAiming>();
+        enterJump = false;
         RecordOriginalAttribute();
     }
 
@@ -92,12 +100,25 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movement = transform.right * x + transform.forward * z;
 
+        //update animation
+        if (movement.x + movement.z == 0) {
+            ani.SetFloat("Speed", 0.0f);
+        } else {
+            ani.SetFloat("Speed", 0.5f);
+        }
+
         if(Input.GetKey(KeyCode.LeftShift)){   //allow player to accelerate by holding left shift when it is grounded
             //Debug.Log("accelerating");
             playerAttribute.isAccel = true;
             movement*= runMultiplier;
+            ani.SetFloat("Speed", 1.0f);
         } else {
             playerAttribute.isAccel = false;
+            if (movement.x + movement.z == 0) {
+                ani.SetFloat("Speed", 0.0f);
+            } else {
+                ani.SetFloat("Speed", 0.5f);
+            }
         }
         controller.Move(movement * movementSpeed * Time.deltaTime);
 
@@ -107,7 +128,16 @@ public class PlayerMovement : MonoBehaviour
 
         //Jump handler
         if(Input.GetButton("Jump") && controller.isGrounded){
+            enterJump = true;
+            ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
+        }
+
+        //update jump animation
+        ani.SetBool("isJumping", enterJump);
+
+        if (enterJump && controller.isGrounded) {
+            enterJump = false;
         }
 
         Vector3 origin = new Vector3(
@@ -124,6 +154,9 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move(movement * Time.deltaTime * runMultiplier);
         }
+
+        //update attack animation
+        ani.SetBool("isAttacking", aim.isCastingSkill);
 
     }
     

@@ -36,7 +36,7 @@ public class PlayerAiming : MonoBehaviour
 
         }
     }
-
+/*
     void CastSkill(){
         if(Input.GetKeyDown(KeyCode.Mouse0) //player clicked the mouse, the skill is not in cool down, having enough energy
             && player.skills[player.theChosenSkillIndex].IsAvailabe() && IfHaveEnoughEnergy() ){
@@ -47,6 +47,28 @@ public class PlayerAiming : MonoBehaviour
             UpdateBulletTargetPosition();
             CreateVFXObject();
         }
+    }
+*/
+    public bool isCastingSkill=false;
+    float castSkillTime=0.2f;
+    void CastSkill(){
+        if(Input.GetKeyDown(KeyCode.Mouse0) //player clicked the mouse, the skill is not in cool down, having enough energy
+            && player.skills[player.theChosenSkillIndex].IsAvailabe() && IfHaveEnoughEnergy() ){
+            SetSkillToCoolDownState(player.theChosenSkillIndex);
+            SpentPlayerEnergy();
+            UpdateTheChosenSkillEffect();
+            UpdateAimingRayAttribute();
+            UpdateBulletTargetPosition();
+            CreateVFXObject();
+            StartCoroutine(UpdateIsCastingSkill(castSkillTime));
+            
+        }
+    }
+
+    IEnumerator UpdateIsCastingSkill(float castSkillTime){
+        isCastingSkill=true;
+        yield return new WaitForSeconds(castSkillTime);
+        isCastingSkill=false;
     }
 
     void SetSkillToCoolDownState(int skillIndex){
