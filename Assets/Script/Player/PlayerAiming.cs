@@ -36,24 +36,13 @@ public class PlayerAiming : MonoBehaviour
 
         }
     }
-/*
-    void CastSkill(){
-        if(Input.GetKeyDown(KeyCode.Mouse0) //player clicked the mouse, the skill is not in cool down, having enough energy
-            && player.skills[player.theChosenSkillIndex].IsAvailabe() && IfHaveEnoughEnergy() ){
-            SetSkillToCoolDownState(player.theChosenSkillIndex);
-            SpentPlayerEnergy();
-            UpdateTheChosenSkillEffect();
-            UpdateAimingRayAttribute();
-            UpdateBulletTargetPosition();
-            CreateVFXObject();
-        }
-    }
-*/
+
     public bool isCastingSkill=false;
-    float castSkillTime=0.2f;
+    float castSkillTime=0.5f;
     void CastSkill(){
         if(Input.GetKeyDown(KeyCode.Mouse0) //player clicked the mouse, the skill is not in cool down, having enough energy
             && player.skills[player.theChosenSkillIndex].IsAvailabe() && IfHaveEnoughEnergy() ){
+            if(isCastingSkill)  return; //cant attack if it is attacking
             SetSkillToCoolDownState(player.theChosenSkillIndex);
             SpentPlayerEnergy();
             UpdateTheChosenSkillEffect();
@@ -107,7 +96,7 @@ public class PlayerAiming : MonoBehaviour
 
     void UpdateBulletTargetPosition(){
     
-        if(Physics.Raycast(ray, out hitInfo)){  
+        if(Physics.Raycast(ray, out hitInfo)&& ! (hitInfo.point.z<transform.position.z)){  
             bulletTarget.position = hitInfo.point;
         }
         else{
