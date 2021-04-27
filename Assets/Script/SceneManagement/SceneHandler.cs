@@ -59,9 +59,12 @@ public class SceneHandler :MonoBehaviour
         }
         else if(IsInBattleScene()){
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-            enemy.GetComponent<NavMeshAgent>().Warp(enemyBattleScenePos.position);  //need to use warp to spawn a gameobj with navmeshagent
-           
+          //  enemy.GetComponent<NavMeshAgent>().Warp(enemyBattleScenePos.position);  //need to use warp to spawn a gameobj with navmeshagent
+            
+            NavMeshHit hit;
+            NavMesh.SamplePosition(enemyBattleScenePos.position, out hit,5,1);
             player.transform.position = playerBattleScenePos.position;
+            enemy.GetComponent<NavMeshAgent>().Warp(hit.position);  //need to use warp to spawn a gameobj with navmeshagent
 
             //cameraCtor.Target=enemyBattleScenePos ;
             CameraController cameraCtor= GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraController>();
