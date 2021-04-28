@@ -15,7 +15,7 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyVision enemyVision;
 
     //getting animator
-    public Animator ani;
+    private Animator ani;
 
     //getting attack ability 
     private EnemyFire enemyFire;
