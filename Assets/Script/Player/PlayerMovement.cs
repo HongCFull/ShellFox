@@ -7,7 +7,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public PlayerAttributes playerAttribute;
     public PlayerAiming aim;
-    
+    private FootSteps footSteps;
+
+
     //for player wasd movement
     CharacterController controller;
     public float movementSpeed;
@@ -30,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
     public bool enterJump;
     public Animator ani;
 
+    // for footstep sound
+    private float footStepsAccumulator=0;
+    private bool inAir =false;
+
 //for initialization
 
     void RecordOriginalAttribute(){
@@ -43,6 +49,7 @@ public class PlayerMovement : MonoBehaviour
         controller = GetComponent<CharacterController>();
         ani = GetComponentInChildren<Animator>();
         aim = GetComponent<PlayerAiming>();
+        footSteps = GetComponent<FootSteps>();
         enterJump = false;
         RecordOriginalAttribute();
     }
@@ -91,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
         if(controller.isGrounded && velocity.y < 0){
             velocity.y = -2f;
             headHitSomething=false; //reset 
+            inAir = false;
         }
 
         //wasd movement
@@ -104,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             ani.SetFloat("Speed", 0.0f,0.15f,Time.deltaTime);
         } else {
             ani.SetFloat("Speed", 0.5f,0.15f,Time.deltaTime);
+            footStepsAccumulator +=Time.deltaTime;
         }
 
         if(Input.GetKey(KeyCode.LeftShift)){   //allow player to accelerate by holding left shift when it is grounded
@@ -123,6 +132,12 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(movement * movementSpeed * Time.deltaTime);
 
+        //play foot steps sound
+        if(footStepsAccumulator>footSteps.playFootStepsPeriod && !inAir){
+            footSteps.PlayFootStep();
+            footStepsAccumulator=0;
+        }
+
         //apply gravity 
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
@@ -130,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
         //Jump handler
         if(Input.GetButton("Jump") && controller.isGrounded &&playerAttribute.canMove){
             enterJump = true;
+            inAir = true;
             ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
         }
@@ -152,6 +168,8 @@ public class PlayerMovement : MonoBehaviour
 
         //accelerating
         if(Input.GetKey(KeyCode.LeftShift)){
+            if(movement.magnitude>0.0f)
+                footStepsAccumulator +=Time.deltaTime;
             controller.Move(movement * Time.deltaTime * runMultiplier);
         }
 
@@ -159,5 +177,5 @@ public class PlayerMovement : MonoBehaviour
         ani.SetBool("isAttacking", aim.isCastingSkill);
 
     }
-    
+
 }
