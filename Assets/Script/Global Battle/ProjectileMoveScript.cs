@@ -10,8 +10,11 @@ public class ProjectileMoveScript : MonoBehaviour {
 	public float fireRate;
 	public GameObject muzzlePrefab;
 	public GameObject hitPrefab;
-	public AudioClip shotSFX;
+	public AudioClip muzzleSFX;
 	public AudioClip hitSFX;
+	[Range(0f,1f)]public float muzzleSFX_Volume;
+	[Range(0f,1f)]public float hitSFX_Volume;
+
 	public List<GameObject> trails;
 
 	private float speedRandomness;
@@ -58,8 +61,8 @@ public class ProjectileMoveScript : MonoBehaviour {
 			}
 		}
 
-		if (shotSFX != null && GetComponent<AudioSource>()) {
-			AudioSource.PlayClipAtPoint(shotSFX, this.gameObject.transform.position);
+		if (muzzleSFX != null && GetComponent<AudioSource>()) {
+			AudioSource.PlayClipAtPoint(muzzleSFX, this.gameObject.transform.position,muzzleSFX_Volume);
 
 			//GetComponent<AudioSource> ().PlayOneShot (shotSFX);
 		}
@@ -82,7 +85,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 			}
 
 			if (hitSFX != null && GetComponent<AudioSource>()) {
-				AudioSource.PlayClipAtPoint(hitSFX, this.gameObject.transform.position);
+				AudioSource.PlayClipAtPoint(hitSFX, this.gameObject.transform.position,hitSFX_Volume);
 
 				//GetComponent<AudioSource> ().PlayOneShot (hitSFX);
 				Debug.Log("Played");

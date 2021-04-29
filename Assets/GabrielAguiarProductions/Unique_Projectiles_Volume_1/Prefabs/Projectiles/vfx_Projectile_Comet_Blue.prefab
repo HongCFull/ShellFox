@@ -53,8 +53,10 @@ MonoBehaviour:
   muzzlePrefab: {fileID: 1232470965182556, guid: 2765bd2d85d69614e8cc9a32c900b9d4,
     type: 3}
   hitPrefab: {fileID: 1245966705752388, guid: a2817e105c7676447a5a4ba002ae2c28, type: 3}
-  shotSFX: {fileID: 8300000, guid: 7fe39f0cea2cbe14f876bf8f77d8d090, type: 3}
+  muzzleSFX: {fileID: 8300000, guid: 7fe39f0cea2cbe14f876bf8f77d8d090, type: 3}
   hitSFX: {fileID: 8300000, guid: b42abf87c0a284eea9d79db21dd40742, type: 3}
+  muzzleSFX_Volume: 0.5
+  hitSFX_Volume: 0.3
   trails:
   - {fileID: 1254810215673000}
   - {fileID: 1666458265320816}
@@ -102,8 +104,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
-  m_Pitch: 0.56
+  m_Volume: 0
+  m_Pitch: 0.7
   Loop: 0
   Mute: 0
   Spatialize: 0

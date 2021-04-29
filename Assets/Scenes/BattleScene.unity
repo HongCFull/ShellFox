@@ -4540,13 +4540,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1439511424}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8eb8a4f708c1d0943b42d6d6d07b4f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 9e76927218ab301408d01d56483866a1, type: 3}
   - {fileID: 8300000, guid: 22b43f55ffff8ab4c97cc6642023054d, type: 3}
   - {fileID: 8300000, guid: 5ea661ef45c97bc439ff443a8a6303b2, type: 3}
   - {fileID: 8300000, guid: 6acacf8f43a919142be0878523c6a8cb, type: 3}
@@ -4554,7 +4553,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6657429f189f43243a194d59293c6cad, type: 3}
   - {fileID: 8300000, guid: d77302f3f70888f4991d6a6967706df9, type: 3}
   - {fileID: 8300000, guid: ca5ac818877e19048a5c32add11de512, type: 3}
-  volume: 0.035
+  volume: 0.025
   transitionTime: 5
 --- !u!82 &1439511426
 AudioSource:
@@ -5276,6 +5275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: P_FX_stars
+      objectReference: {fileID: 0}
+    - target: {fileID: 8194874722895663215, guid: 0d89dcf50b80af94c990b2e6f78607db,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0d89dcf50b80af94c990b2e6f78607db, type: 3}

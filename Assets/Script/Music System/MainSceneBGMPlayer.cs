@@ -5,21 +5,22 @@ using UnityEngine;
 public class MainSceneBGMPlayer : MonoBehaviour
 {
     AudioSource audioSource;
-    AudioClip bgm;  
-    private float bgmLength;
-    private float accumulator;
-    [Range(0.0f,0.05f)] public float Volume; 
-    [Range(0.0f,5f)] public float timeDelay; 
-    void Start(){
-        StartCoroutine(PlayMainSceneBGM(timeDelay));
-    }
+    private float accumulator;    
+    [Tooltip("Best so far around 0.02-0.035")][Range(0f,0.05f)]  public float volume;
+    [Range(0.1f,5f)]  public float transitionTime;
 
-    IEnumerator PlayMainSceneBGM(float t){
-        yield return new WaitForSeconds(t);
+    void Start(){
         audioSource = GetComponent<AudioSource>();
-        bgm = audioSource.clip;
-        audioSource.volume = Volume;     // best range from (0.01 to 0.05)
+        audioSource.volume = 0f;
+        audioSource.loop = true;
         audioSource.Play();
     }
+
+    void Update() {
+        if (audioSource.volume >=volume)    return;
+        audioSource.volume += volume*Time.deltaTime/transitionTime;
+    }
+
+
 
 }

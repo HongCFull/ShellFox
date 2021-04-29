@@ -14798,8 +14798,10 @@ MonoBehaviour:
   muzzlePrefab: {fileID: 1310787322710076, guid: 8019657b4cfe45d4c9b92d9dce2b473a,
     type: 3}
   hitPrefab: {fileID: 1183852268493988, guid: 291527634aaaa96489be473e5beadc8b, type: 3}
-  shotSFX: {fileID: 8300000, guid: ec567f35bfc6d1a4694907416fd6f697, type: 3}
+  muzzleSFX: {fileID: 8300000, guid: ec567f35bfc6d1a4694907416fd6f697, type: 3}
   hitSFX: {fileID: 8300000, guid: be04c8156ae57fc4e932aafe9325a4cb, type: 3}
+  muzzleSFX_Volume: 1
+  hitSFX_Volume: 1
   trails:
   - {fileID: 1739691434595618}
   - {fileID: 1478543064790934}
