@@ -15,7 +15,7 @@ public class EnemyStateMachine : MonoBehaviour
     private EnemyVision enemyVision;
 
     //getting animator
-    private Animator ani;
+    public Animator ani;
 
     //getting attack ability 
     private EnemyFire enemyFire;
@@ -108,7 +108,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         enemyVision=enemyVisionFrom.GetComponent<EnemyVision>();
 
-        ani = GetComponentInChildren<Animator>();
+        //ani = GetComponentInChildren<Animator>();
 
         EnemyAgent=GetComponent<UnityEngine.AI.NavMeshAgent>();
         EnemyAgent.speed = enemyAttributes.enemySpeed;
@@ -130,8 +130,8 @@ public class EnemyStateMachine : MonoBehaviour
         if(haveSeenPlayerOnce || sceneHandler.IsInBattleScene()){  //for optimization
             UpdateDistanceToPlayer();
             EnemyReactWithState();
+            ani.SetBool("isAttacking", isCastingSkill); //update attack animation
         }
-        ani.SetBool("isAttacking", isCastingSkill); //update attack animation
     }
 
     void UpdateDistanceToPlayer(){
