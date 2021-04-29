@@ -82,7 +82,6 @@ public class SceneHandler :MonoBehaviour
 
     }
 
-
 //Get Functions
 
     string GetBattleSceneName(){

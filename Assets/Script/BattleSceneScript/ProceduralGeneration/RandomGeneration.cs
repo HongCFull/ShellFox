@@ -56,7 +56,7 @@ public class RandomGeneration : MonoBehaviour
     public AudioClip pop;
 
     void Awake()    //make sure it is executed earlier than the textureAssigner
-    {
+    {        
         //initialization
         audioSource=GetComponent<AudioSource>();
         SetRandomNoiseOffset();
@@ -109,10 +109,23 @@ public class RandomGeneration : MonoBehaviour
         Xindex_Enemy=0,Zindex_Enemy =0;
         GetGridIndexByWorldPos(playerSpawnPoint.position,ref Xindex_Player,ref Zindex_Player);
         GetGridIndexByWorldPos(enemySpawnPoint.position,ref Xindex_Enemy,ref Zindex_Enemy);
-        grids[Xindex_Player,Zindex_Player].spawnable=false;
-        grids[Xindex_Enemy,Zindex_Enemy].spawnable=false;
-        Debug.Log("Player spawn at Grid (x,z) ="+Xindex_Player+" , "+Zindex_Player);
-        Debug.Log("Enemy spawn at Grid (x,z) ="+Xindex_Enemy+" , "+Zindex_Enemy);
+        SetNeighbourGirdsUnspawnable(Xindex_Player,Zindex_Player);
+        SetNeighbourGirdsUnspawnable(Xindex_Enemy,Zindex_Enemy);
+
+       // grids[Xindex_Player,Zindex_Player].spawnable=false;
+       // grids[Xindex_Enemy,Zindex_Enemy].spawnable=false;
+       // Debug.Log("Player spawn at Grid (x,z) ="+Xindex_Player+" , "+Zindex_Player);
+       // Debug.Log("Enemy spawn at Grid (x,z) ="+Xindex_Enemy+" , "+Zindex_Enemy);
+    }
+
+    void SetNeighbourGirdsUnspawnable(int x,int y){
+        for(int dx = -1; dx<=1 ; dx++){
+            for(int dy =-1 ; dy<=1 ;dy++){
+                if( x+dx<0 || x+dx>gridNumberX || y+dy<0 || y+dy>gridNumberZ )       //note that gridNumberX and gridNumberZ shd be the same
+                    continue;
+                grids[x+dx,y+dy].spawnable=false;
+            }
+        }
     }
 
     void AllocateMemoryForDataMember(){

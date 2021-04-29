@@ -583,7 +583,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1851287536387109359}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1384537285}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8071924a62ff01842b3aa18fed4870e9, type: 3}
@@ -778,6 +778,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 164291072}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1384537285 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4009130562645249736, guid: edf490932e409634eb594b5865ad1d10,
+    type: 3}
+  m_PrefabInstance: {fileID: 1851287536387109359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1388664945 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1571144040, guid: edf490932e409634eb594b5865ad1d10,
@@ -911,7 +917,7 @@ Transform:
   m_Children:
   - {fileID: 1294858902}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1831019749 stripped
 MonoBehaviour:
@@ -1858,7 +1864,7 @@ PrefabInstance:
     - target: {fileID: 6354748910718560582, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: aimHeightOffset
-      value: 0.67
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 6354748910796356107, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
@@ -1887,24 +1893,29 @@ PrefabInstance:
       objectReference: {fileID: 1747668854}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
+      propertyPath: ConeHeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
       propertyPath: eyeRayWidth
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: objects.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: objects.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1384537285}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: objects.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1693432725}
     - target: {fileID: 6354748912013969201, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
       propertyPath: objects.Array.data[2]
@@ -1984,7 +1995,7 @@ PrefabInstance:
     - target: {fileID: 7746392829450064887, guid: 6896033917b973248bf3df31eda44577,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7746392829450064887, guid: 6896033917b973248bf3df31eda44577,
         type: 3}
