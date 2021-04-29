@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     // for footstep sound
     private float footStepsAccumulator=0;
     private bool inAir =false;
+    
 
 //for initialization
 
@@ -148,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
             inAir = true;
             ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
+            footSteps.PlayJumpSFX();
         }
 
         //update jump animation
