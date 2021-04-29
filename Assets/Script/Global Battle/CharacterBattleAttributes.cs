@@ -10,6 +10,9 @@ public class CharacterBattleAttributes : MonoBehaviour
     // Use this to get the information of the opponent
     // Refer to the BattleHandler game object <- we should update that gameobject directly 
     public BattleHandler battleManager;
+    private SceneHandler sceneHandler;
+    private SpeciesAttribute baseStat;
+
 
     // UI elements
     public HealthBar healthBar;
@@ -18,12 +21,12 @@ public class CharacterBattleAttributes : MonoBehaviour
     // Attributes for characters Currently
     public BattleType.Element element;
     public int Lv;
+    private float lvRatio;
     public float maxHp;
     public float maxEnergy;
     public float attack;
     public float defense;
     public float energyRecoverPeriod;
-
 
     [SerializeField] BattleSkill[] inspector_skills;    //It is Just for copying into skills[] for real usage, dont access it after instantiating!
    // [HideInInspector]
@@ -53,6 +56,8 @@ public class CharacterBattleAttributes : MonoBehaviour
 
     public void ReAssignDependencies(){
         battleManager = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
+        sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
+        baseStat = GetComponent<SpeciesAttribute>();
     }
 
     //optimization for enemy ? only instantiate skills when trigger battle
@@ -77,6 +82,8 @@ public class CharacterBattleAttributes : MonoBehaviour
 // Update is called once per frame
     virtual public void Update()
     {
+        if(!sceneHandler.IsInBattleScene()) return;
+        ChangeAtkDefWithEnergy();
         BattleUIHandle();
     }
 
@@ -142,7 +149,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     }
 
     protected void SpendMovementEnergy(){
-        currentEnergy -= (isAccel? 2f: 1f) * (currentEnergy <= 0? 0: 1) * Time.deltaTime *5;   
+        currentEnergy -= (isAccel? 2f: 1f) * (currentEnergy <= 0? 0: 1) * Time.deltaTime * 0.1f*(maxEnergy);   //each second takes 5% of total energy
     }
 
     public void LostEnergyBy(float usage){
@@ -212,14 +219,19 @@ public class CharacterBattleAttributes : MonoBehaviour
     public void UpdateCharacterCurrentAttributes(){
         //use the base attribute && current lv,exp to calculate the current hp atk def energy
         // formula : stat = (sqrt(x)+1) * lv
-        float ratio = Mathf.Sqrt(Lv)+1;
-        if(Lv<=1) ratio =1;  //assign baseStat to Lv 0,1 char
+        lvRatio = Mathf.Sqrt(Lv)+1;
+        if(Lv<=1) lvRatio =1;  //assign baseStat to Lv 0,1 char
         SpeciesAttribute baseStat = GetComponent<SpeciesAttribute>();
-        maxHp = baseStat.baseHp*ratio;
-        maxEnergy = baseStat.baseEnergy*ratio;
-        attack = baseStat.baseAttack*ratio;
-        defense = baseStat.baseDefense*ratio;
+        maxHp = baseStat.baseHp*lvRatio;
+        maxEnergy = baseStat.baseEnergy*lvRatio;
+        attack = baseStat.baseAttack*lvRatio;  //current energy will change your atk and def
+        defense = baseStat.baseDefense*lvRatio;
 
+    }//* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
+
+    void ChangeAtkDefWithEnergy(){
+        attack = baseStat.baseAttack*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);  //current energy will change your atk and def
+        defense = baseStat.baseDefense*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
     }
 
 //FOR DEBUGGING

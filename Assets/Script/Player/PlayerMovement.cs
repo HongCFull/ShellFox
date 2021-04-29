@@ -88,7 +88,6 @@ public class PlayerMovement : MonoBehaviour
 
     void MovementVer2(){
         //grounded reset
-        if(!playerAttribute.canMove)    return;
         if(controller.isGrounded && velocity.y < 0){
             velocity.y = -2f;
             headHitSomething=false; //reset 
@@ -120,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
                 ani.SetFloat("Speed", 0.5f,0.15f,Time.deltaTime);
             }
         }
+        if(!playerAttribute.canMove)    movement=new Vector3(0,0,0);
+
         controller.Move(movement * movementSpeed * Time.deltaTime);
 
         //apply gravity 
@@ -127,7 +128,7 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(velocity * Time.deltaTime);
 
         //Jump handler
-        if(Input.GetButton("Jump") && controller.isGrounded){
+        if(Input.GetButton("Jump") && controller.isGrounded &&playerAttribute.canMove){
             enterJump = true;
             ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
@@ -150,8 +151,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //accelerating
-        if(Input.GetKey(KeyCode.LeftShift))
-        {
+        if(Input.GetKey(KeyCode.LeftShift)){
             controller.Move(movement * Time.deltaTime * runMultiplier);
         }
 

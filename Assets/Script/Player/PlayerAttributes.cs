@@ -15,7 +15,7 @@ public class PlayerAttributes : CharacterBattleAttributes
     public float playerJumpSpeed_inBattle;
     
 
-    void InitializePlayerAttribute(){
+    void SetPlayerCurrentAttributes(){
        // recoverPeriod = 2f;
         currentHp = maxHp;
         currentEnergy = maxEnergy;
@@ -38,7 +38,8 @@ public class PlayerAttributes : CharacterBattleAttributes
     public override void Start()
     {
         base.Start();
-        InitializePlayerAttribute();
+        UpdateCharacterCurrentAttributes();
+        SetPlayerCurrentAttributes();
     }
 
     // Update is called once per frame
