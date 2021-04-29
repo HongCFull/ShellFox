@@ -7,6 +7,7 @@ public class PlayerAiming : MonoBehaviour
 
     Camera mainCamera;
     [SerializeField] BattleHandler BattleManager;
+    private FootSteps footSteps;
     public Transform bulletStartPos;
     public Transform bulletTarget;
 
@@ -23,6 +24,7 @@ public class PlayerAiming : MonoBehaviour
     void Start() {
         mainCamera=Camera.main;
         player = gameObject.GetComponent<PlayerAttributes>();
+        footSteps = GetComponent<FootSteps>();
 
     }
 
@@ -50,7 +52,7 @@ public class PlayerAiming : MonoBehaviour
             UpdateBulletTargetPosition();
             CreateVFXObject();
             StartCoroutine(UpdateIsCastingSkill(castSkillTime));
-            
+            footSteps.PlayAtkSFX();
         }
     }
 

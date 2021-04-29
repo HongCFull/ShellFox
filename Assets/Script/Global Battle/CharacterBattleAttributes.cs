@@ -149,7 +149,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     }
 
     protected void SpendMovementEnergy(){
-        currentEnergy -= (isAccel? 2f: 1f) * (currentEnergy <= 0? 0: 1) * Time.deltaTime * 0.1f*(maxEnergy);   //each second takes 5% of total energy
+        currentEnergy -= (isAccel? 2f: 1f) * (currentEnergy <= 0? 0: 1) * Time.deltaTime * 0.05f*(maxEnergy);   //each second takes 5% of total energy
     }
 
     public void LostEnergyBy(float usage){
