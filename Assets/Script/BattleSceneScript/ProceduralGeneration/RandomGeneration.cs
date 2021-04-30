@@ -52,13 +52,13 @@ public class RandomGeneration : MonoBehaviour
     public Transform playerSpawnPoint;
     public Transform enemySpawnPoint;
     
-    public AudioSource audioSource; 
-    public AudioClip pop;
+    //public AudioSource audioSource; 
+    //public AudioClip pop;
 
     void Awake()    //make sure it is executed earlier than the textureAssigner
     {        
         //initialization
-        audioSource=GetComponent<AudioSource>();
+        //audioSource=GetComponent<AudioSource>();
         SetRandomNoiseOffset();
         InitializeGridData();
         InitializeTerrainData();  
@@ -259,7 +259,7 @@ public class RandomGeneration : MonoBehaviour
 
                 if(obj != null){
                     objectList.Add(obj);
-                    audioSource.PlayOneShot(pop,0.02f);
+                   // audioSource.PlayOneShot(pop,0.02f);
                  //   yield return new WaitForSeconds(0.1f);
                 }
             }

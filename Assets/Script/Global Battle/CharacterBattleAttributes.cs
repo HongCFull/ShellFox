@@ -63,8 +63,10 @@ public class CharacterBattleAttributes : MonoBehaviour
     //optimization for enemy ? only instantiate skills when trigger battle
     public void InstantiateSkills(){
         for(int i=0;i<inspector_skills.Length; i++){
+            Debug.Log("instantiateing "+gameObject.name+" skill["+i+"]");
             skills[i]= Instantiate(inspector_skills[i]);
             skills[i].transform.parent = gameObject.transform;
+            //gameobject is gonnna be null as it is not really attached to a gameobj
         }
     }
 
@@ -214,7 +216,6 @@ public class CharacterBattleAttributes : MonoBehaviour
         energyBar.gameObject.SetActive(false);
     }
 
-    
     //should be called by player attributes and enemy attributes 
     public void UpdateCharacterCurrentAttributes(){
         //use the base attribute && current lv,exp to calculate the current hp atk def energy
@@ -233,6 +234,15 @@ public class CharacterBattleAttributes : MonoBehaviour
         attack = baseStat.baseAttack*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);  //current energy will change your atk and def
         defense = baseStat.baseDefense*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
     }
+
+//temp bug solver : 
+    public bool SkillsNotInstantiated(){
+        for(int i=0 ; i<inspector_skills.Length;i++){
+            if(skills[i]==null)
+                return true;
+        }
+        return false;
+    } 
 
 //FOR DEBUGGING
     public virtual void PrintAllAvailableSkills(){

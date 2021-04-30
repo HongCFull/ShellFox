@@ -100,7 +100,7 @@ public class EnemyStateMachine : MonoBehaviour
         }
     }
 
-    void Start()
+    void Awake()
     {
         SetInitialData();
         ReAssignDependencies();
@@ -276,8 +276,7 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
     IEnumerator RandomWandering_BattleScene(Vector3 targetPos){
-
-        while(!HaveReachedPos(targetPos) && enemyAttributes.canMove ){ //get out of the loop if reached pos or enemy have no energy
+        while(gameObject!=null && !HaveReachedPos(targetPos) && enemyAttributes.canMove ){ //get out of the loop if reached pos or enemy have no energy
             EnemyAgent.SetDestination(targetPos);
             randAccumulator_BattleScene=0;  //dont contribute to randAccumulator during walking
             yield return null;
@@ -288,7 +287,7 @@ public class EnemyStateMachine : MonoBehaviour
 // Enemy Attack Functions
 
     void StopAndAttackPlayer(){ //Suppose skill var is passed by ref
-
+        
         FaceTarget(Player.position);
         SetEnemyToIdle();
         AttackPlayer();
@@ -379,11 +378,10 @@ public class EnemyStateMachine : MonoBehaviour
         haveSeenPlayerOnce=true;
         isInHatredState=true;
         enemyAttributes.inBattle=(true);
-       // AssignEnemyAttributeToBattleManager();
     }
 
     void AssignEnemyAttributeToBattleManager(){
-        //Link the enemyAttribute part to the battleManager
+        Debug.Log("Assigned enemy to battle handler");
         battleHandler.enemy = gameObject.GetComponent<EnemyAttributes>();
         battleHandler.UpdatePlayerInBattleOrNot();
     }
@@ -418,6 +416,7 @@ public class EnemyStateMachine : MonoBehaviour
             return true;
         return false;
     }
+
 
 //Visualize Debug Function
     private void OnDrawGizmos() {

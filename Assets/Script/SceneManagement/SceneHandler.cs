@@ -14,8 +14,6 @@ public class SceneHandler :MonoBehaviour
     }
     private string previousMainScene="";
 
-   // public Transform playerMainScenePos;
-  //  public Transform enemyMainScenePos;
     public Transform playerBattleScenePos;
     public Transform enemyBattleScenePos;
     
@@ -29,6 +27,9 @@ public class SceneHandler :MonoBehaviour
 
     private GameObject player;
 
+    //assign enemy attributes to battle handler
+    private BattleHandler battleHandler;
+
     void Start(){
         
         if(obj!=null){ 
@@ -36,11 +37,13 @@ public class SceneHandler :MonoBehaviour
             return ;
         }
         obj = gameObject;
+        battleHandler = GameObject.FindGameObjectWithTag("BattleHandler").GetComponent<BattleHandler>();
         DontDestroyOnLoad(gameObject);
     }
 
 
-    IEnumerator SpawnCharacters(string toScene){
+    //spawn character objs, assign dependencies to battle handler
+    IEnumerator SetUpSceneSettings(string toScene){ 
         //add scene transition animation here if we have time :) 
         AsyncOperation isLoaded = SceneManager.LoadSceneAsync(toScene);
         while(!isLoaded.isDone){
@@ -58,9 +61,7 @@ public class SceneHandler :MonoBehaviour
             player.transform.position = playerMainScene_TriggerPos;
         }
         else if(IsInBattleScene()){
-            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");
-          //  enemy.GetComponent<NavMeshAgent>().Warp(enemyBattleScenePos.position);  //need to use warp to spawn a gameobj with navmeshagent
-            
+            GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");            
             NavMeshHit hit;
             
             NavMesh.SamplePosition(enemyBattleScenePos.position, out hit,10,1);
@@ -77,6 +78,7 @@ public class SceneHandler :MonoBehaviour
             GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
             camera.transform.LookAt(enemyBattleScenePos);   
 
+            battleHandler.SetEnemyAttributesToBattleHandler(enemy.GetComponent<EnemyAttributes>());
         }
         player.GetComponent<CharacterController>().enabled=true;
 
@@ -94,12 +96,12 @@ public class SceneHandler :MonoBehaviour
 
     public void LoadBattleSceneFromMainScene(string currentSceneName){
         previousMainScene = currentSceneName;
-        StartCoroutine(SpawnCharacters(GetBattleSceneName()));
+        StartCoroutine(SetUpSceneSettings(GetBattleSceneName()));
     }
   
     public IEnumerator LoadPreviousMainSceneFromBattleAfter(float time){
         yield return new WaitForSeconds(time);
-        StartCoroutine(SpawnCharacters(GetPreviousMainScene()));
+        StartCoroutine(SetUpSceneSettings(GetPreviousMainScene()));
     } 
 
     public bool IsInMainScene(){

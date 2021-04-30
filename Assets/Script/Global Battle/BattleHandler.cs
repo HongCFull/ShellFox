@@ -25,7 +25,6 @@ public class BattleHandler : MonoBehaviour
     private void OnEnable() {
         SceneManager.sceneLoaded += UpdatePlayerVFXDmg;
         SceneManager.sceneLoaded += UpdateEnemyVFXDmg;
-
     }
 
     private void OnDisable() {
@@ -63,6 +62,11 @@ public class BattleHandler : MonoBehaviour
                 (attackSkill.GetSkillPower() * enemy.attack / player.defense)/10 
                 + 1);
        }
+    }
+
+    public void SetEnemyAttributesToBattleHandler(EnemyAttributes eny){
+        enemy = eny;
+        UpdatePlayerInBattleOrNot();
     }
 
 // Helper function. Should only be called inside this class 
