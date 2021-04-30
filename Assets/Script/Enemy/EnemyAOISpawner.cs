@@ -27,7 +27,7 @@ public class EnemyAOISpawner : MonoBehaviour
     void Start() {
         DontDestroyThisObj();
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
-        CloneEnemyTemplate();
+       // CloneEnemyTemplate();
         
         count = 0;
     }
@@ -49,6 +49,9 @@ public class EnemyAOISpawner : MonoBehaviour
     }
 
     void Update() {
+    if(Input.GetKeyUp(KeyCode.Tab))
+        Debug.Log("list count ="+enemiesList.Count);
+
         if(sceneHandler.IsInBattleScene())  return;
 
         accumulator += Time.deltaTime;
