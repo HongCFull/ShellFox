@@ -161,7 +161,7 @@ public class BattleHandler : MonoBehaviour
     }
 
     private bool AttackElementIs(BattleSkill attackSkill,BattleType.Element element){
-        if(attackSkill == null) Debug.Log("FUCK");
+        if(attackSkill == null) Debug.Log("asdajsd");
         return attackSkill.GetAttackElementType()==element;
     }
 

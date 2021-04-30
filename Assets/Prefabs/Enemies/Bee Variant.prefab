@@ -197,6 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6354748910351440232, guid: ff865004e708bd947b3d523041f31849,
         type: 3}
+      propertyPath: element
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6354748910351440232, guid: ff865004e708bd947b3d523041f31849,
+        type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 0}

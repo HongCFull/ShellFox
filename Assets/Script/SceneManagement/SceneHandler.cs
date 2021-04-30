@@ -48,7 +48,7 @@ public class SceneHandler :MonoBehaviour
         AsyncOperation isLoaded = SceneManager.LoadSceneAsync(toScene);
         while(!isLoaded.isDone){
             //animation
-            Debug.Log("loading");
+//            Debug.Log("loading");
             yield return null;
         }
        // yield return SceneManager.LoadSceneAsync(GetNextSceneIndex());
@@ -62,6 +62,7 @@ public class SceneHandler :MonoBehaviour
         }
         else if(IsInBattleScene()){
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");            
+            
             NavMeshHit hit;
             
             NavMesh.SamplePosition(enemyBattleScenePos.position, out hit,10,1);

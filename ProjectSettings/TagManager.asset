@@ -10,6 +10,7 @@ TagManager:
   - BattleHandler
   - EnemySpawnHandler
   - SavingSystem
+  - EnemyClone
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Enemy
   - Snow
   - Stone
-  - 
+  - EnemyClone
   - 
   - 
   - 
