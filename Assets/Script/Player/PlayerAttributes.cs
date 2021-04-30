@@ -109,7 +109,6 @@ public class PlayerAttributes : CharacterBattleAttributes
             Debug.Log(
                 "\nPlayer exp = " + playerExperience
                 +"\n Player Lv = "+Lv);
-
         }
     }
 
@@ -124,5 +123,14 @@ public class PlayerAttributes : CharacterBattleAttributes
         if(delta<0) return;
         Lv = (int)((25 + Mathf.Sqrt(delta)) / (2*25));
         UpdateCharacterCurrentAttributes();
+    }
+
+//for file saving 
+    public float GetCurrentExp(){
+        return playerExperience;
+    }
+    
+    public void SetCurrentExp(float exp){
+        playerExperience = exp;
     }
 }
