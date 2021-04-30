@@ -14,6 +14,9 @@ public class EnemyStateMachine : MonoBehaviour
     public GameObject enemyVisionFrom;
     private EnemyVision enemyVision;
 
+    //getting animator
+    public Animator ani;
+
     //getting attack ability 
     private EnemyFire enemyFire;
 
@@ -127,6 +130,7 @@ public class EnemyStateMachine : MonoBehaviour
         if(haveSeenPlayerOnce || sceneHandler.IsInBattleScene()){  //for optimization
             UpdateDistanceToPlayer();
             EnemyReactWithState();
+            ani.SetBool("isAttacking", isCastingSkill); //update attack animation
         }
     }
 
