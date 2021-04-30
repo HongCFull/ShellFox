@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ProjectileMoveScript : MonoBehaviour {
 
-	public string parentTag;
 	public float speed;
 	[Tooltip("From 0% to 100%")]
 	public float accuracy;
@@ -75,9 +74,7 @@ public class ProjectileMoveScript : MonoBehaviour {
 	}
 
 	void OnCollisionEnter (Collision co) {
-		if (co.gameObject.tag != "Bullet" && 
-			co.gameObject.tag != parentTag && 
-			!collided) {	// the first collision
+		if (co.gameObject.tag != "Bullet" && !collided) {	// the first collision
 			collided = true;
 			
 			//deal dmg to target

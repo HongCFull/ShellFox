@@ -38,7 +38,6 @@ public class PlayerAttributes : CharacterBattleAttributes
     public override void Start()
     {
         base.Start();
-        AssignBattleSkillsParentTag();
         UpdateCharacterCurrentAttributes();
         SetPlayerCurrentAttributes();
     }
@@ -54,11 +53,6 @@ public class PlayerAttributes : CharacterBattleAttributes
         PrintCurrentPlayerExpLVIf_E_isPressed();
     }
 
-
-    void AssignBattleSkillsParentTag(){
-        for(int i = 1 ; i <skills.Length ; i++)
-            skills[i].EffectToSpawn.GetComponent<ProjectileMoveScript>().parentTag = gameObject.tag;
-    }
 
     void UpdatePlayerBattleUIandState(){
         if (inBattle) {

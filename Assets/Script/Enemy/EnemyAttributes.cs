@@ -48,7 +48,6 @@ public class EnemyAttributes : CharacterBattleAttributes
     public override void Start()
     {       
         base.Start();
-        AssignBattleSkillsParentTag();
         UpdateCharacterCurrentAttributes();
         SetEnemyCurrentAttributes();
         
@@ -61,10 +60,6 @@ public class EnemyAttributes : CharacterBattleAttributes
     }
 
     
-    void AssignBattleSkillsParentTag(){
-        for(int i = 1 ; i <skills.Length ; i++)
-            skills[i].EffectToSpawn.GetComponent<ProjectileMoveScript>().parentTag = gameObject.tag;
-    }
 
     public override void PrintAllAvailableSkills(){
         for(int i=1; i<skills.Length;i++){
