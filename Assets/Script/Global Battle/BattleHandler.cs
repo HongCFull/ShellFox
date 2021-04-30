@@ -13,12 +13,13 @@ public class BattleHandler : MonoBehaviour
     public List<string> DefeatedEnemyNameList; 
     [SerializeField] SceneHandler sceneHandler;
 
+    bool BattleEndProcessed;
     private float loadSceneDelay = 3f;  //Note: this variable should only be set inside the script
-
 
     void Start(){
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         DefeatedEnemyNameList = new List<string>();
+        BattleEndProcessed = false;
     }
 
 
@@ -41,32 +42,38 @@ public class BattleHandler : MonoBehaviour
         }
     }
 
-    //used in testing
     public void DealDamageToTargetBySkill(BattleSkill attackSkill,TargetIs target){
         if(target==TargetIs.ENEMY){ //deal damage to global enemy
+            if(enemy==null) return;
             enemy.LostHpBy( GetSkillDamageToTarget(attackSkill,target) );
         }
         else{   //deal dmg to player
+            if(player==null) return;
             player.LostHpBy( GetSkillDamageToTarget(attackSkill,target) );
         }
     }
 
     public float GetSkillDamageToTarget(BattleSkill attackSkill, TargetIs target){   //target = the one who are being attacked 
        if(target==TargetIs.ENEMY){
+           if(enemy==null)  return 0;
             return CalculateElementFactor(attackSkill,target)*(
                 (attackSkill.GetSkillPower() * player.attack / enemy.defense)/10 
                 + 1);
        }
        else{    //dealing dmg to player
+            if(player==null)  return 0;
             return CalculateElementFactor(attackSkill,target)*(
                 (attackSkill.GetSkillPower() * enemy.attack / player.defense)/10 
                 + 1);
        }
     }
 
-    public void SetEnemyAttributesToBattleHandler(EnemyAttributes eny){
+    //called by scene handler
+    public void SetUpBattleHandler(EnemyAttributes eny){
         enemy = eny;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttributes>();
         UpdatePlayerInBattleOrNot();
+        BattleEndProcessed = false;
     }
 
 // Helper function. Should only be called inside this class 
@@ -136,6 +143,7 @@ public class BattleHandler : MonoBehaviour
 
     public void UpdatePlayerVFXDmg(Scene scene, LoadSceneMode mode){
         if(!sceneHandler.IsInBattleScene(scene.name)) return;
+        if(player==null)    return;
         for(int i =1 ; i <player.skills.Length ; i++){
             if(player.skills[i]==null) Debug.Log("null player skill + " +i);
             player.skills[i].EffectToSpawn.GetComponent<ProjectileMoveScript>().damage = 
@@ -144,10 +152,8 @@ public class BattleHandler : MonoBehaviour
     }
 
     public void UpdateEnemyVFXDmg(Scene scene, LoadSceneMode mode){
-        if(!sceneHandler.IsInBattleScene(scene.name)) {
-            Debug.Log("Returned in update enemy vfx");
-            return;
-        }
+        if(!sceneHandler.IsInBattleScene(scene.name)) return;
+        if(enemy==null)    return;
         for(int i =1 ; i <enemy.skills.Length ; i++){
             enemy.skills[i].EffectToSpawn.GetComponent<ProjectileMoveScript>().damage = 
             (GetSkillDamageToTarget( enemy.skills[i],TargetIs.PLAYER));
@@ -160,8 +166,9 @@ public class BattleHandler : MonoBehaviour
     }
 
     public bool Operation_CharacterDefeated(CharacterBattleAttributes defeatedChar){
+        if (BattleEndProcessed) return false;
         if(defeatedChar.GetType() == typeof(EnemyAttributes)){     //enemy is defeated
-
+            BattleEndProcessed = true;
             DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
             player.PlayerGainExp(enemy.expGainedByPlayer);
             player.UpGradePlayerLevelAndAttributes();
@@ -173,7 +180,19 @@ public class BattleHandler : MonoBehaviour
         }
     //NOT IMPLEMENTED IF THE PLAYER IS DEFEATED!
         else if(defeatedChar.GetType() == typeof(PlayerAttributes)){   //player is defeated
-            //StartCoroutine(sceneHandler.LoadNextSceneAfterTime(loadSceneDelay));
+            BattleEndProcessed = true;
+          //  player.enabled = false;
+            enemy.ResetBattleAttributes_and_UI();
+            player.ResetBattleAttributes_and_UI();  //refill players battle data
+            player.HideBattleUI();
+            
+            enemy = null;
+            player = null;
+            
+            //defeatedChar.gameObject.SetActive(false);
+            StartCoroutine(sceneHandler.RestorePlayerMainSceneFromLastSave(loadSceneDelay));
+           // defeatedChar.gameObject.SetActive(true);
+          //  player.enabled = true;
             Debug.Log("YOU LOSE!!!!");
         }
         return false;

@@ -176,8 +176,8 @@ public class EnemyStateMachine : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player" && sceneHandler.IsInMainScene()&& triggerAccumulator>=activeTriggerBuffer){
             triggerAccumulator = 0f;
-            SetEnemyIsInBattleState(); 
             AssignEnemyAttributeToBattleManager();
+            SetEnemyIsInBattleState(); 
             GetComponent<CapsuleCollider>().isTrigger = false;
             GetComponent<PreserveEnemy>().sceneHandler.SetPlayerMainScenePosHolder(other.gameObject.transform.position);
             GetComponent<PreserveEnemy>().EnemyTrigger_LoadBattleScene();
@@ -287,7 +287,7 @@ public class EnemyStateMachine : MonoBehaviour
 // Enemy Attack Functions
 
     void StopAndAttackPlayer(){ //Suppose skill var is passed by ref
-        
+        if(battleHandler.player==null)  return;
         FaceTarget(Player.position);
         SetEnemyToIdle();
         AttackPlayer();
@@ -381,8 +381,10 @@ public class EnemyStateMachine : MonoBehaviour
     }
 
     void AssignEnemyAttributeToBattleManager(){
+        if(battleHandler.enemy!= null) return;  //early exit when it is already assgined
         Debug.Log("Assigned enemy to battle handler");
-        battleHandler.enemy = gameObject.GetComponent<EnemyAttributes>();
+       // battleHandler.enemy = gameObject.GetComponent<EnemyAttributes>();
+        battleHandler.SetUpBattleHandler(GetComponent<EnemyAttributes>());
         battleHandler.UpdatePlayerInBattleOrNot();
     }
 

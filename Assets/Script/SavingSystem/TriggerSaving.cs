@@ -23,15 +23,26 @@ public class TriggerSaving : MonoBehaviour
     // Update is called once per frame
     void Update(){
         if(Input.GetKeyDown(KeyCode.N)){
-            Debug.Log("Saved player's exp and position ");
-            SavingSystem.SavePlayer(player.GetComponent<PlayerAttributes>());
+            SavePlayerData();
         }
         else if(Input.GetKeyDown(KeyCode.M)){
-            Debug.Log("loading player's exp and position ");
-            PlayerData data= SavingSystem.LoadPlayer();
-            player.GetComponent<PlayerAttributes>().SetCurrentExp(data.playerExp);
-            Vector3 playerPos = new Vector3(data.position[0],data.position[1],data.position[2]);
-            player.transform.position = playerPos;
+            LoadPlayerData();
         }
+    }
+
+    public void SavePlayerData(){
+        Debug.Log("Saved player's exp and position ");
+        SavingSystem.SavePlayer(player.GetComponent<PlayerAttributes>());
+    }
+
+    public void LoadPlayerData(){
+        Debug.Log("loading player's exp and position ");
+        PlayerData data= SavingSystem.LoadPlayer();
+        player.GetComponent<PlayerAttributes>().SetCurrentExp(data.playerExp);
+        Vector3 playerPos = new Vector3(data.position[0],data.position[1],data.position[2]);
+        player.gameObject.SetActive(true);
+        player.GetComponent<CharacterController>().enabled=false;
+        player.transform.position = playerPos;
+        player.GetComponent<CharacterController>().enabled=true;
     }
 }

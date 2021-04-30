@@ -56,10 +56,9 @@ public class EnemyAttributes : CharacterBattleAttributes
     public override void Update()
     { 
         base.Update();
-        ReportIfCharacterIsDefeated();
+       // ReportIfCharacterIsDefeated();
     }
 
-    
 
     public override void PrintAllAvailableSkills(){
         for(int i=1; i<skills.Length;i++){
@@ -163,13 +162,12 @@ public class EnemyAttributes : CharacterBattleAttributes
         return skills[index].GetAttackEnergyCost()<currentEnergy;
     }
 
+    /*
     public void ReportIfCharacterIsDefeated() {
         if(isDefeated()){
             battleManager.Operation_CharacterDefeated(this);
-           // gameObject.SetActive(false);
-           // Destroy(this.gameObject);
         }
     }
-
+    */
 }
  

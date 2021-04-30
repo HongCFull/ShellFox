@@ -9,6 +9,7 @@ TagManager:
   - SceneHandler
   - BattleHandler
   - EnemySpawnHandler
+  - SavingSystem
   layers:
   - Default
   - TransparentFX

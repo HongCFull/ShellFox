@@ -13,7 +13,6 @@ public class CharacterBattleAttributes : MonoBehaviour
     private SceneHandler sceneHandler;
     private SpeciesAttribute baseStat;
 
-
     // UI elements
     public HealthBar healthBar;
     public EnergyBar energyBar;
@@ -63,7 +62,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     //optimization for enemy ? only instantiate skills when trigger battle
     public void InstantiateSkills(){
         for(int i=0;i<inspector_skills.Length; i++){
-            Debug.Log("instantiateing "+gameObject.name+" skill["+i+"]");
+           // Debug.Log("instantiateing "+gameObject.name+" skill["+i+"]");
             skills[i]= Instantiate(inspector_skills[i]);
             skills[i].transform.parent = gameObject.transform;
             //gameobject is gonnna be null as it is not really attached to a gameobj
@@ -87,6 +86,7 @@ public class CharacterBattleAttributes : MonoBehaviour
         if(!sceneHandler.IsInBattleScene()) return;
         ChangeAtkDefWithEnergy();
         BattleUIHandle();
+        ReportIfCharacterIsDefeated();
     }
 
     protected void BattleUIHandle(){
@@ -234,6 +234,13 @@ public class CharacterBattleAttributes : MonoBehaviour
         attack = baseStat.baseAttack*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);  //current energy will change your atk and def
         defense = baseStat.baseDefense*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
     }
+
+    public void ReportIfCharacterIsDefeated() {
+        if(isDefeated()){
+            battleManager.Operation_CharacterDefeated(this);
+        }
+    }
+
 
 //temp bug solver : 
     public bool SkillsNotInstantiated(){

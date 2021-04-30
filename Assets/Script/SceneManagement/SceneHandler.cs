@@ -78,11 +78,12 @@ public class SceneHandler :MonoBehaviour
             GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
             camera.transform.LookAt(enemyBattleScenePos);   
 
-            battleHandler.SetEnemyAttributesToBattleHandler(enemy.GetComponent<EnemyAttributes>());
+            battleHandler.SetUpBattleHandler(enemy.GetComponent<EnemyAttributes>());
         }
         player.GetComponent<CharacterController>().enabled=true;
 
     }
+
 
 //Get Functions
 
@@ -146,5 +147,21 @@ public class SceneHandler :MonoBehaviour
     public void SetEnemyMainScenePosHolder(Vector3 pos){
         enemyMainScenePos_TriggerPos = pos;
     }
+
+
+    IEnumerator SimpleLoadSceneOperation(string toScene){
+        AsyncOperation isLoaded = SceneManager.LoadSceneAsync(toScene);
+        while(!isLoaded.isDone){
+            //animation
+            Debug.Log("loading");
+            yield return null;
+        }
+    }
+
+    public IEnumerator RestorePlayerMainSceneFromLastSave(float time){
+        yield return new WaitForSeconds(time);
+        yield return StartCoroutine(SimpleLoadSceneOperation(GetPreviousMainScene()));
+        GameObject.FindGameObjectWithTag("SavingSystem").GetComponent<TriggerSaving>().LoadPlayerData();
+    } 
 
 }

@@ -48,7 +48,6 @@ public class PlayerAttributes : CharacterBattleAttributes
         base.Update();
         UpdatePlayerBattleUIandState();
         ProcessPlayerSkillChoice();
-        
        // PrintAllAvailableSkillsIf_P_isPressed();
         PrintCurrentPlayerExpLVIf_E_isPressed();
     }
@@ -129,7 +128,7 @@ public class PlayerAttributes : CharacterBattleAttributes
     public float GetCurrentExp(){
         return playerExperience;
     }
-    
+
     public void SetCurrentExp(float exp){
         playerExperience = exp;
     }
