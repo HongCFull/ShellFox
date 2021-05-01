@@ -9,6 +9,7 @@ public class TriggerSaving : MonoBehaviour
     // Start is called before the first frame update
     void Start(){
         PreserveThisObj();
+        Invoke("LoadPlayerData",0.1f);
     }
 
     void PreserveThisObj(){
@@ -38,11 +39,14 @@ public class TriggerSaving : MonoBehaviour
     public void LoadPlayerData(){
         Debug.Log("loading player's exp and position ");
         PlayerData data= SavingSystem.LoadPlayer();
+        if(data==null)  return;
         player.GetComponent<PlayerAttributes>().SetCurrentExp(data.playerExp);
+        player.GetComponent<PlayerAttributes>().UpGradePlayerLevelAndAttributes();
         Vector3 playerPos = new Vector3(data.position[0],data.position[1],data.position[2]);
         player.gameObject.SetActive(true);
         player.GetComponent<CharacterController>().enabled=false;
         player.transform.position = playerPos;
         player.GetComponent<CharacterController>().enabled=true;
+        
     }
 }

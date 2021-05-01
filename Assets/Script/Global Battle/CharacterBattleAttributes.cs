@@ -51,6 +51,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     virtual public void Start() {
         InstantiateSkills();
         ReAssignDependencies();
+        HideBattleUI();
     }
 
     public void ReAssignDependencies(){

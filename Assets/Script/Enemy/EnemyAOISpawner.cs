@@ -17,10 +17,7 @@ public class EnemyAOISpawner : MonoBehaviour
     public int maxEnemySpawned;
     public float spawnPeriod;
     public int maxLvDiff;
-
-    public int receviedPlayerlv;
     
-   // [SerializeField] Collider[] colliders = new Collider[20];    //at most store 20 enemies
     [SerializeField] GameObject[] scannedObj;
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
     [SerializeField] LayerMask layers;  //obj with this layer can be scanned
@@ -45,7 +42,6 @@ public class EnemyAOISpawner : MonoBehaviour
     }
 
     void SpawnInitialGroupOfEnemies(Scene scene, LoadSceneMode mode){
-        receviedPlayerlv = player.GetComponent<PlayerAttributes>().Lv;
         enemiesList.Clear();
         Debug.Log("Called spawn init enemies");
         SceneHandler sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
@@ -178,6 +174,5 @@ public class EnemyAOISpawner : MonoBehaviour
         else if(lv<40)   return Category.STAGE2;
         else    return Category.STAGE3;
     }
-// =========================Depreciated============================
 
 }

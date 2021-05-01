@@ -13,7 +13,8 @@ public class PlayerAttributes : CharacterBattleAttributes
     public float playerSpeed_inBattle;
     public float playerAccel_inBattle;
     public float playerJumpSpeed_inBattle;
-    
+    private float mainSceneRestorePeriod=5f;
+    private float restoreAccumulator=0f;
 
     void SetPlayerCurrentAttributes(){
        // recoverPeriod = 2f;
@@ -51,8 +52,8 @@ public class PlayerAttributes : CharacterBattleAttributes
         DisPlayExp = playerExperience;
         UpdatePlayerBattleUIandState();
         ProcessPlayerSkillChoice();
-       // PrintAllAvailableSkillsIf_P_isPressed();
         PrintCurrentPlayerExpLVIf_E_isPressed();
+        RestoreHpEnergyInMainScene();
     }
 
 
@@ -130,7 +131,7 @@ public class PlayerAttributes : CharacterBattleAttributes
         UpdateCharacterCurrentAttributesWithLv(RestoreHpEnergy);
     }
 
-    public void GainHalfHpEnergy(){
+    public void GainHalfHpEnergy(){ //called by battle manager 
         currentHp += maxHp/2f;
         currentHp = Mathf.Min(currentHp,maxHp);
 
@@ -144,6 +145,22 @@ public class PlayerAttributes : CharacterBattleAttributes
         
         healthBar.SetHealth(currentHp);
         energyBar.SetEnergy(currentEnergy);
+    }
+
+    void RestoreHpEnergyInMainScene(){
+        restoreAccumulator+=Time.deltaTime;
+        if(restoreAccumulator>mainSceneRestorePeriod){
+            restoreAccumulator=0f;
+            
+            currentHp+=maxHp/5f;
+            currentHp = Mathf.Min(currentHp,maxHp);
+
+            currentEnergy+=maxEnergy/5f;
+            currentEnergy = Mathf.Min(currentEnergy,maxEnergy);
+
+            healthBar.SetHealth(currentHp);
+            energyBar.SetEnergy(currentEnergy);
+        }
     }
 
 //for file saving 
