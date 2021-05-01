@@ -286,11 +286,15 @@ MonoBehaviour:
   occlusionLayer:
     serializedVersion: 2
     m_Bits: 1
-  objects: []
+  objects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   visionFrom: {fileID: 1751417472386712297}
   ConeAngle: 90
-  ConeHeight: 10
-  ConeRadius: 14.19
+  ConeHeight: 20
+  ConeRadius: 20.5
   segments: 20
   eyeRayWidth: 1
   meshColor: {r: 1, g: 0.8031938, b: 0, a: 1}
@@ -858,7 +862,7 @@ MonoBehaviour:
   canMove: 1
   canRecover: 0
   enemySpeed: 10
-  attackArea: 10
+  attackArea: 15
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
   randWanderingPeriod: 5

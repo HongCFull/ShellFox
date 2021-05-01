@@ -35,8 +35,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
         type: 3}
+      propertyPath: ConeHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: ConeRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: visionFrom
+      value: 
+      objectReference: {fileID: 1885800597729141584}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
       propertyPath: objects.Array.size
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
         type: 3}
@@ -46,6 +61,26 @@ PrefabInstance:
     - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
         type: 3}
       propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: objects.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: objects.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: objects.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997503576934539, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 534997504271922609, guid: 16c5f7a21ddcb0c439c73086c97b5565,
@@ -598,3 +633,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16c5f7a21ddcb0c439c73086c97b5565, type: 3}
+--- !u!4 &1885800597729141584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 131690081996406521, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+    type: 3}
+  m_PrefabInstance: {fileID: 2015482640484474281}
+  m_PrefabAsset: {fileID: 0}

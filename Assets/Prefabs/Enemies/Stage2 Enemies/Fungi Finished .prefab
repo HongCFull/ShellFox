@@ -762,8 +762,8 @@ MonoBehaviour:
   - {fileID: 0}
   visionFrom: {fileID: 5839115698786575195}
   ConeAngle: 90
-  ConeHeight: 10
-  ConeRadius: 14.19
+  ConeHeight: 15.6
+  ConeRadius: 20
   segments: 20
   eyeRayWidth: 1
   meshColor: {r: 1, g: 0.8031938, b: 0, a: 1}
@@ -939,7 +939,7 @@ MonoBehaviour:
   canMove: 1
   canRecover: 0
   enemySpeed: 10
-  attackArea: 10
+  attackArea: 12
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
   randWanderingPeriod: 5

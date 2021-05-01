@@ -245,6 +245,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
+      propertyPath: ConeHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: ConeRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
       propertyPath: objects.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -256,6 +266,26 @@ PrefabInstance:
     - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: objects.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: objects.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: objects.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5231867903736260128, guid: 1e6b8da56d870004da7bb19953fa6bb0,

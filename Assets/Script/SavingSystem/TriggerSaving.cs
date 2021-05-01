@@ -6,10 +6,12 @@ public class TriggerSaving : MonoBehaviour
 {
     [HideInInspector] public static GameObject obj;
     [SerializeField] GameObject player;
+    private SceneHandler sceneHandler;
     // Start is called before the first frame update
     void Start(){
+        sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         PreserveThisObj();
-        Invoke("LoadPlayerData",0.1f);
+        Invoke("LoadPlayerData",0.05f);
     }
 
     void PreserveThisObj(){
@@ -29,6 +31,7 @@ public class TriggerSaving : MonoBehaviour
         else if(Input.GetKeyDown(KeyCode.M)){
             LoadPlayerData();
         }
+        UpgradeDifficultyWithStage();
     }
 
     public void SavePlayerData(){
@@ -37,6 +40,7 @@ public class TriggerSaving : MonoBehaviour
     }
 
     public void LoadPlayerData(){
+        if(sceneHandler.IsInBattleScene())  return;
         Debug.Log("loading player's exp and position ");
         PlayerData data= SavingSystem.LoadPlayer();
         if(data==null)  return;
@@ -48,5 +52,21 @@ public class TriggerSaving : MonoBehaviour
         player.transform.position = playerPos;
         player.GetComponent<CharacterController>().enabled=true;
         
+    }
+
+//JUST FOR THE CONVINIENCE OF SEEING THOSE ENEMIES IN HIGHER STAGE
+    void UpgradeDifficultyWithStage(){
+        if(Input.GetKeyDown(KeyCode.I)){    //stage 1
+            player.GetComponent<PlayerAttributes>().SetCurrentExp(0);
+            player.GetComponent<PlayerAttributes>().UpGradePlayerLevelAndAttributes();
+        }
+        if(Input.GetKeyDown(KeyCode.O)){    //stage 2
+            player.GetComponent<PlayerAttributes>().SetCurrentExp(9501);
+            player.GetComponent<PlayerAttributes>().UpGradePlayerLevelAndAttributes();
+        }
+        if(Input.GetKeyDown(KeyCode.P)){    //stage 3
+            player.GetComponent<PlayerAttributes>().SetCurrentExp(49501);
+            player.GetComponent<PlayerAttributes>().UpGradePlayerLevelAndAttributes();
+        }
     }
 }

@@ -14792,7 +14792,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 28
-  accuracy: 90
+  accuracy: 95
   fireRate: 2
   muzzlePrefab: {fileID: 1310787322710076, guid: 41cd53ec80f24134d86b612ccddf8b25,
     type: 3}

@@ -151,9 +151,8 @@ public class EnemyAttributes : CharacterBattleAttributes
     }
 
     private float RandomnessEvaluation(){
-       // return Random.Range(0.75f,1f);
-        return Random.Range(1f,1f);
-
+        return Random.Range(0.75f,1f);  //the enemy may not always be that smart to figure out the "optimal solution"! 
+       // return Random.Range(1f,1f);
     }
 
 //Helper Functions

@@ -510,7 +510,7 @@ MonoBehaviour:
   canMove: 1
   canRecover: 0
   enemySpeed: 10
-  attackArea: 10
+  attackArea: 7
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
   randWanderingPeriod: 5
@@ -573,7 +573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 68
-  baseEnergy: 100
+  baseEnergy: 120
   baseAttack: 50
   baseDefense: 30
 --- !u!1 &4965774599335473456
@@ -996,10 +996,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   visionFrom: {fileID: 4485673876528946007}
   ConeAngle: 90
-  ConeHeight: 10
-  ConeRadius: 14.19
+  ConeHeight: 15.3
+  ConeRadius: 20
   segments: 20
   eyeRayWidth: 1
   meshColor: {r: 1, g: 0.8031938, b: 0, a: 1}

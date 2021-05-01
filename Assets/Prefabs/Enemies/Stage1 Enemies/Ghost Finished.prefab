@@ -107,8 +107,23 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
         type: 3}
+      propertyPath: ConeHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: ConeRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: visionFrom
+      value: 
+      objectReference: {fileID: 4681925805467909158}
+    - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
       propertyPath: objects.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
         type: 3}
@@ -133,6 +148,11 @@ PrefabInstance:
     - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
         type: 3}
       propertyPath: objects.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 132944177644255352, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 132944177787778512, guid: f10851b411cee1c49bb2ab343f7cceb0,
@@ -233,3 +253,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10851b411cee1c49bb2ab343f7cceb0, type: 3}
+--- !u!4 &4681925805467909158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 533458912180686346, guid: f10851b411cee1c49bb2ab343f7cceb0,
+    type: 3}
+  m_PrefabInstance: {fileID: 5160756541047829036}
+  m_PrefabAsset: {fileID: 0}

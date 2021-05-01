@@ -271,8 +271,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
+      propertyPath: ConeHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: ConeRadius
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: visionFrom
+      value: 
+      objectReference: {fileID: 7753578090289247659}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
       propertyPath: objects.Array.size
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
@@ -282,6 +297,26 @@ PrefabInstance:
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: objects.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: objects.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: objects.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: objects.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102322, guid: 8e975cc9e643f524a93297a5d0c48908,
@@ -393,3 +428,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e975cc9e643f524a93297a5d0c48908, type: 3}
+--- !u!4 &7753578090289247659 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1543583706201598082, guid: 8e975cc9e643f524a93297a5d0c48908,
+    type: 3}
+  m_PrefabInstance: {fileID: 9147328724856413481}
+  m_PrefabAsset: {fileID: 0}
