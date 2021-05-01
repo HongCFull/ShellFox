@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.094171904, g: 0.13110355, b: 0.2743114, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4626,7 +4626,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 22b43f55ffff8ab4c97cc6642023054d, type: 3}
   - {fileID: 8300000, guid: 5ea661ef45c97bc439ff443a8a6303b2, type: 3}
   - {fileID: 8300000, guid: 6acacf8f43a919142be0878523c6a8cb, type: 3}
   - {fileID: 8300000, guid: f5e71b7b622b3d14a9c38f93924f924b, type: 3}
@@ -6689,8 +6688,6 @@ MonoBehaviour:
   depth: 3
   playerSpawnPoint: {fileID: 143827232}
   enemySpawnPoint: {fileID: 309211763}
-  audioSource: {fileID: 0}
-  pop: {fileID: 0}
 --- !u!1001 &2054535615
 PrefabInstance:
   m_ObjectHideFlags: 0
