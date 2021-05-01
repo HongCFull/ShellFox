@@ -208,7 +208,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   energyBar: {fileID: 0}
   element: 3
-  Lv: 0
+  Lv: 2
   maxHp: 100
   maxEnergy: 100
   attack: 100

@@ -247,7 +247,7 @@ PrefabInstance:
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: objects.Array.size
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
@@ -279,6 +279,22 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
+      objectReference: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
+        type: 3}
+    - target: {fileID: 5387708529621778342, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387708529621778342, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387708529621778342, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5865613880804702571, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
@@ -343,7 +359,7 @@ PrefabInstance:
     - target: {fileID: 8831693680568869688, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: m_Name
-      value: Mushroom (1) Variant
+      value: Mushroom Finished
       objectReference: {fileID: 0}
     - target: {fileID: 8831693680568869688, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}

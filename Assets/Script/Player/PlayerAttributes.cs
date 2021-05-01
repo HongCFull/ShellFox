@@ -8,7 +8,7 @@ public class PlayerAttributes : CharacterBattleAttributes
 
     [HideInInspector] public static float playerExperience;
     [HideInInspector]public int theChosenSkillIndex;
-
+    public float DisPlayExp;
     //accesed by the playerMovement script while battling 
     public float playerSpeed_inBattle;
     public float playerAccel_inBattle;
@@ -38,14 +38,16 @@ public class PlayerAttributes : CharacterBattleAttributes
     public override void Start()
     {
         base.Start();
-        UpdateCharacterCurrentAttributes();
+        UpGradePlayerLevelAndAttributes();
         SetPlayerCurrentAttributes();
     }
 
     // Update is called once per frame
     public override void Update()
     {
+
         base.Update();
+        DisPlayExp = playerExperience;
         UpdatePlayerBattleUIandState();
         ProcessPlayerSkillChoice();
        // PrintAllAvailableSkillsIf_P_isPressed();

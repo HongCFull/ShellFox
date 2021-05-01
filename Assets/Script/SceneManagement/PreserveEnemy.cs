@@ -27,14 +27,7 @@ public class PreserveEnemy : MonoBehaviour
         if(distanceToPlayer >enemyAOISpawner.maxRadius){
             if(gameObject.tag=="EnemyClone")    return; //dont destroy the copy template of AOI spawner!
             else    
-            //else if(gameObject.layer == LayerMask.NameToLayer("EnemyClone")){
-            //    Debug.Log("Destroyed");
                 Destroy(gameObject);    //destroy enemy if it is cloned/from original 
-
-           // }
-            //else
-           //  gameObject.SetActive(false);    //dont delete original enemy "prefab"
-            
         }
     }
 

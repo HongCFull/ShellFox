@@ -103,7 +103,7 @@ PrefabInstance:
     - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: objects.Array.size
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
@@ -210,6 +210,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5851846980330569506, guid: 9dda8f88a25508140aee8066dcf319fe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851846980330569506, guid: 9dda8f88a25508140aee8066dcf319fe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 5851846980330569506, guid: 9dda8f88a25508140aee8066dcf319fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.19
+      objectReference: {fileID: 0}
     - target: {fileID: 6511511620787064864, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: m_Layer
@@ -219,11 +234,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
+        type: 3}
     - target: {fileID: 7017005220595475388, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: m_Name
-      value: Egg (1) Variant
+      value: Egg Finished
       objectReference: {fileID: 0}
     - target: {fileID: 7017005220595475388, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}

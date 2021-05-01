@@ -129,11 +129,27 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
+      objectReference: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
+        type: 3}
+    - target: {fileID: 6397415372903110958, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397415372903110958, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6397415372903110958, guid: f10851b411cee1c49bb2ab343f7cceb0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7538086389706868144, guid: f10851b411cee1c49bb2ab343f7cceb0,
         type: 3}
       propertyPath: m_Name
-      value: Ghost (1) Variant
+      value: Ghost Finished
       objectReference: {fileID: 0}
     - target: {fileID: 8365555865564046739, guid: f10851b411cee1c49bb2ab343f7cceb0,
         type: 3}

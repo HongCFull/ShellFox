@@ -169,7 +169,7 @@ public class BattleHandler : MonoBehaviour
         if (BattleEndProcessed) return false;
         if(defeatedChar.GetType() == typeof(EnemyAttributes)){     //enemy is defeated
             BattleEndProcessed = true;
-            DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
+//DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
             player.PlayerGainExp(enemy.expGainedByPlayer);
             player.UpGradePlayerLevelAndAttributes();
             player.ResetBattleAttributes_and_UI();  //refill players battle data

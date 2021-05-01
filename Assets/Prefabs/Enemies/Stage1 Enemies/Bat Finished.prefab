@@ -147,6 +147,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1264151704560716509, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264151704560716509, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.551
+      objectReference: {fileID: 0}
+    - target: {fileID: 1264151704560716509, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.033
+      objectReference: {fileID: 0}
     - target: {fileID: 1937477769476122079, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: m_Layer
@@ -156,11 +171,12 @@ PrefabInstance:
         type: 3}
       propertyPath: cam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
+        type: 3}
     - target: {fileID: 2440860322595591747, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: m_Name
-      value: Bat (1) Variant
+      value: Bat Finished
       objectReference: {fileID: 0}
     - target: {fileID: 2440860322595591747, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
@@ -230,7 +246,7 @@ PrefabInstance:
     - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: objects.Array.size
-      value: 13
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
