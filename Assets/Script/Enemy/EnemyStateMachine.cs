@@ -301,10 +301,11 @@ public class EnemyStateMachine : MonoBehaviour
         int skillIndex = enemyAttributes.GetSkillIndex();
         //Debug.Log("Chose the skill index = "+skillIndex);
 
-        enemyFire.ShootRay();
+        enemyFire.ShootVFX();   //handled spend cost already
 
         //Spent Energy and Set skill to unavailable
-        enemyAttributes.LostEnergyBy( enemyAttributes.skills[skillIndex].GetAttackEnergyCost());
+        //Debug.Log("Cost = "+enemyAttributes.skills[skillIndex].GetAttackEnergyCost());
+        //enemyAttributes.LostEnergyBy( enemyAttributes.skills[skillIndex].GetAttackEnergyCost());
         enemyAttributes.skills[skillIndex].SetSkillToUnavailable();
         
         //set the skills after some cool down time

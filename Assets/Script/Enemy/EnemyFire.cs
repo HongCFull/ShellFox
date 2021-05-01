@@ -28,7 +28,7 @@ public class EnemyFire : MonoBehaviour
     // Update is called once per frame
 
 
-    public void ShootRay(){
+    public void ShootVFX(){
         SpentEnemyEnergy();
         UpdateTheChosenSkillEffect();
         CreateVFXObject();  

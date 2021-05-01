@@ -224,10 +224,10 @@ public class CharacterBattleAttributes : MonoBehaviour
         lvRatio = Mathf.Sqrt(Lv)+1;
         if(Lv<=1) lvRatio =1;  //assign baseStat to Lv 0,1 char
         SpeciesAttribute baseStat = GetComponent<SpeciesAttribute>();
-        maxHp = baseStat.baseHp*lvRatio;
-        maxEnergy = baseStat.baseEnergy*lvRatio;
-        attack = baseStat.baseAttack*lvRatio;  //current energy will change your atk and def
-        defense = baseStat.baseDefense*lvRatio;
+        maxHp = baseStat.baseHp+Mathf.Pow(lvRatio,2f);
+        maxEnergy = baseStat.baseEnergy+Mathf.Pow(lvRatio,2.15f);
+        attack = baseStat.baseAttack+Mathf.Pow(lvRatio,2.3f);  //current energy will change your atk and def
+        defense = baseStat.baseDefense+Mathf.Pow(lvRatio,1.5f);
         //Set Up The UI
         if(restore){
             currentHp = maxHp;

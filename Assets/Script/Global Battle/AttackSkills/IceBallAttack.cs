@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class IceBallAttack : BattleSkill
 {
-   [SerializeField] float Damage ;
+   [SerializeField] float Power ;
     [SerializeField] float EnergyCost ;
     [SerializeField] float CoolDown;
     [SerializeField] float CastTime;
@@ -10,7 +10,7 @@ public class IceBallAttack : BattleSkill
 
     private void Awake() {
         skillElement=BattleType.Element.ICE;
-        power=Damage;
+        power=Power;
         energyCost=EnergyCost;
         coolDown=CoolDown;
         castTime=CastTime; 

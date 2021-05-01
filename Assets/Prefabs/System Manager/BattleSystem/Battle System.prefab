@@ -211,6 +211,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8103986031529293321}
     m_Modifications:
+    - target: {fileID: 1369401865154471575, guid: c59be06ca6e882547b7e4f36a88ccec8,
+        type: 3}
+      propertyPath: Power
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1369401865154471575, guid: c59be06ca6e882547b7e4f36a88ccec8,
+        type: 3}
+      propertyPath: EnergyCost
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6146733972392730902, guid: c59be06ca6e882547b7e4f36a88ccec8,
         type: 3}
       propertyPath: m_Name
@@ -291,6 +301,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LeavesAttack
       objectReference: {fileID: 0}
+    - target: {fileID: 161317574711989999, guid: e50b33e17026036458d83f0efabe2990,
+        type: 3}
+      propertyPath: Power
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 161317574711989999, guid: e50b33e17026036458d83f0efabe2990,
+        type: 3}
+      propertyPath: EnergyCost
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7548255551341500079, guid: e50b33e17026036458d83f0efabe2990,
         type: 3}
       propertyPath: m_RootOrder
@@ -365,6 +385,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FireBallAttack
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964509910508540794, guid: 912f929281b5ccc4da0687fcfb3a654b,
+        type: 3}
+      propertyPath: Power
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3964509910508540794, guid: 912f929281b5ccc4da0687fcfb3a654b,
+        type: 3}
+      propertyPath: EnergyCost
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4456345084930900289, guid: 912f929281b5ccc4da0687fcfb3a654b,
         type: 3}
@@ -495,6 +525,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332827756922477934, guid: f95ad5e23e771e844bb178de32e171fa,
+        type: 3}
+      propertyPath: Power
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7332827756922477934, guid: f95ad5e23e771e844bb178de32e171fa,
+        type: 3}
+      propertyPath: EnergyCost
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f95ad5e23e771e844bb178de32e171fa, type: 3}

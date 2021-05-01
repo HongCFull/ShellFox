@@ -2,14 +2,14 @@ using UnityEngine;
 
 public class FireBallAttack : BattleSkill
 {
-    [SerializeField] float Damage ;
+    [SerializeField] float Power ;
     [SerializeField] float EnergyCost ;
     [SerializeField] float CoolDown;
     [SerializeField] float CastTime;
 
     private void Awake() {
         skillElement=BattleType.Element.FIRE;
-        power=Damage;
+        power=Power;
         energyCost=EnergyCost;
         coolDown=CoolDown;
         castTime=CastTime; 

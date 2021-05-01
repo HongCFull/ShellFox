@@ -208,7 +208,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   energyBar: {fileID: 0}
   element: 3
-  Lv: 2
+  Lv: 1
   maxHp: 100
   maxEnergy: 100
   attack: 100
@@ -280,10 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d491e04260265f47ada1bc9d43f8a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 35
+  baseHp: 120
   baseEnergy: 100
-  baseAttack: 8
-  baseDefense: 6
+  baseAttack: 60
+  baseDefense: 40
 --- !u!82 &1384537292
 AudioSource:
   m_ObjectHideFlags: 0

@@ -41,7 +41,7 @@ public class BattleHandler : MonoBehaviour
             player.inBattle=(false);
         }
     }
-
+/*
     public void DealDamageToTargetBySkill(BattleSkill attackSkill,TargetIs target){
         if(target==TargetIs.ENEMY){ //deal damage to global enemy
             if(enemy==null) return;
@@ -52,19 +52,17 @@ public class BattleHandler : MonoBehaviour
             player.LostHpBy( GetSkillDamageToTarget(attackSkill,target) );
         }
     }
-
+*/
     public float GetSkillDamageToTarget(BattleSkill attackSkill, TargetIs target){   //target = the one who are being attacked 
        if(target==TargetIs.ENEMY){
            if(enemy==null)  return 0;
             return CalculateElementFactor(attackSkill,target)*(
-                (attackSkill.GetSkillPower() * player.attack / enemy.defense)/10 
-                + 1);
+                (attackSkill.GetSkillPower() * player.attack / (enemy.defense*5))+ 5);
        }
        else{    //dealing dmg to player
             if(player==null)  return 0;
             return CalculateElementFactor(attackSkill,target)*(
-                (attackSkill.GetSkillPower() * enemy.attack / player.defense)/10 
-                + 1);
+                (attackSkill.GetSkillPower() * enemy.attack / (player.defense*5))+ 5);
        }
     }
 

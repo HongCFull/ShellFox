@@ -204,10 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d491e04260265f47ada1bc9d43f8a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 50
-  baseEnergy: 50
-  baseAttack: 10
-  baseDefense: 10
+  baseHp: 70
+  baseEnergy: 100
+  baseAttack: 50
+  baseDefense: 35
 --- !u!1 &1587419565029486148
 GameObject:
   m_ObjectHideFlags: 0

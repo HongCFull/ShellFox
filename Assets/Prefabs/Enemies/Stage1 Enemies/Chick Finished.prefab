@@ -887,10 +887,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d491e04260265f47ada1bc9d43f8a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 31
+  baseHp: 64
   baseEnergy: 100
-  baseAttack: 4
-  baseDefense: 3.5
+  baseAttack: 47
+  baseDefense: 39
 --- !u!1 &7234607805555960484
 GameObject:
   m_ObjectHideFlags: 0

@@ -97,12 +97,12 @@ PrefabInstance:
     - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: baseHp
-      value: 35
+      value: 68
       objectReference: {fileID: 0}
     - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: baseAttack
-      value: 6
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
@@ -112,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: baseDefense
-      value: 3
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2686986769256798932, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}

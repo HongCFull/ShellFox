@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EffectToSpawn: {fileID: 1746672929845058, guid: d914bf125c123ec4994f1988475d0aad,
     type: 3}
-  Damage: 50
-  EnergyCost: 10
+  Power: 50
+  EnergyCost: 20
   CoolDown: 5
   CastTime: 0.2
