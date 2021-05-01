@@ -422,6 +422,7 @@ public class EnemyStateMachine : MonoBehaviour
 
 
 //Visualize Debug Function
+    [ExecuteAlways]
     private void OnDrawGizmos() {
     
         Gizmos.color=Color.red;

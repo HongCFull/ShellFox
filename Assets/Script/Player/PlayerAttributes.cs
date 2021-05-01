@@ -16,6 +16,8 @@ public class PlayerAttributes : CharacterBattleAttributes
     private float mainSceneRestorePeriod=5f;
     private float restoreAccumulator=0f;
 
+    private SceneHandler SceneHandler;
+
     void SetPlayerCurrentAttributes(){
        // recoverPeriod = 2f;
        Debug.Log("SetPlayerCurrentAttributes called");
@@ -42,6 +44,7 @@ public class PlayerAttributes : CharacterBattleAttributes
         base.Start();
         UpGradePlayerLevelAndAttributes();
         SetPlayerCurrentAttributes();
+        SceneHandler=GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
     }
 
     // Update is called once per frame
@@ -53,7 +56,9 @@ public class PlayerAttributes : CharacterBattleAttributes
         UpdatePlayerBattleUIandState();
         ProcessPlayerSkillChoice();
         PrintCurrentPlayerExpLVIf_E_isPressed();
-        RestoreHpEnergyInMainScene();
+
+        if(SceneHandler.IsInMainScene())
+            RestoreHpEnergyInMainScene();
     }
 
 

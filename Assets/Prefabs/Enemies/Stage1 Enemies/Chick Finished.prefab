@@ -825,7 +825,7 @@ MonoBehaviour:
   canMove: 1
   canRecover: 0
   enemySpeed: 10
-  attackArea: 10
+  attackArea: 13
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
   randWanderingPeriod: 5

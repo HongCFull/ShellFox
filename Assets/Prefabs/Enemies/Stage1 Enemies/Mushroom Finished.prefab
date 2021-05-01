@@ -210,6 +210,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259258454185, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
+      propertyPath: attackArea
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259258454185, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
