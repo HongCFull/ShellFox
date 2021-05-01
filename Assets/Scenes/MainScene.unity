@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.38203096, g: 0.72928065, b: 0.9528302, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.0005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1.57
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 566cc8e80ca8fe5449dfb0f0dfc4ba37, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: bf08f096a9085f04b8de3957d6aa80f2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,8 +37,8 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_Sun: {fileID: 323591716}
+  m_IndirectSpecularColor: {r: 0.35096478, g: 0.49392223, b: 0.6027134, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -253,6 +253,12 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 256
+--- !u!108 &323591716 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5507143086595476449, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964197849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &449246056 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3948616600616193840, guid: af35a863d22589e49a9c0eddcffd9ef3,
@@ -538,6 +544,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81229da1228fefe4cb85a7d9fa45c0a2, type: 3}
+--- !u!4 &1178085391 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5507143086954700584, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1964197849}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1231780392 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2423990331553473443, guid: 0eba92dc1c2006c41995ca5b3f3d4582,
@@ -690,15 +702,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5489168862132098299, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5507143086595476449, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
         type: 3}
       propertyPath: m_Intensity
-      value: 0.94
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5507143086595476449, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
         type: 3}
       propertyPath: m_BounceIntensity
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5507143086595476451, guid: 58f1ee4aa46ffbe40b53fc0e8632a84a,
         type: 3}
@@ -850,7 +867,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 853520258, guid: 072b3eaaba159914584ca7d9ea0f49b7, type: 3}
       propertyPath: Power
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2068212454, guid: 072b3eaaba159914584ca7d9ea0f49b7, type: 3}
       propertyPath: player
@@ -863,7 +880,7 @@ PrefabInstance:
     - target: {fileID: 1027538549857023026, guid: 072b3eaaba159914584ca7d9ea0f49b7,
         type: 3}
       propertyPath: Power
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1519262292059146413, guid: 072b3eaaba159914584ca7d9ea0f49b7,
         type: 3}
@@ -928,12 +945,12 @@ PrefabInstance:
     - target: {fileID: 4230980276686237282, guid: 072b3eaaba159914584ca7d9ea0f49b7,
         type: 3}
       propertyPath: Power
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7288076346348388539, guid: 072b3eaaba159914584ca7d9ea0f49b7,
         type: 3}
       propertyPath: Power
-      value: 15
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072b3eaaba159914584ca7d9ea0f49b7, type: 3}
@@ -1010,6 +1027,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5273593295052693420, guid: edf490932e409634eb594b5865ad1d10,
+        type: 3}
+      propertyPath: m_VolumeTrigger
+      value: 
+      objectReference: {fileID: 1178085391}
     - target: {fileID: 8229672098405162454, guid: edf490932e409634eb594b5865ad1d10,
         type: 3}
       propertyPath: m_RootOrder
