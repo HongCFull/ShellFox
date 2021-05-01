@@ -6,20 +6,19 @@ using UnityEngine.AI;
 
 public class EnemyAOISpawner : MonoBehaviour
 {
-    public GameObject inspector_enemy ;
-    public GameObject enemy ;
+    public GameObject[] enemy ;
     public float maxRadius;
     public GameObject player;
     public int maxEnemySpawned;
     public float spawnPeriod;
     
-    [SerializeField] Collider[] colliders = new Collider[20];    //at most store 20 enemies
+   // [SerializeField] Collider[] colliders = new Collider[20];    //at most store 20 enemies
+    [SerializeField] GameObject[] scannedObj;
     [SerializeField] List<GameObject> enemiesList = new List<GameObject>();
     [SerializeField] LayerMask layers;  //obj with this layer can be scanned
     
     private int currentEnemySpawned =0; 
     private float accumulator=0f;
-    public int count;
 
     private SceneHandler sceneHandler;
     private static GameObject obj;
@@ -27,17 +26,9 @@ public class EnemyAOISpawner : MonoBehaviour
     void Start() {
         DontDestroyThisObj();
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
-       // CloneEnemyTemplate();
         
-        count = 0;
     }
 
-    void CloneEnemyTemplate(){
-        enemy = Instantiate(enemy,enemy.transform.position,Quaternion.identity);    
-        enemy.SetActive(false);
-       // enemy.tag = "EnemyClone";   //to carry it as a template, used for copying only 
-        enemy.GetComponent<PreserveEnemy>().DontDestroyEnemyClone();
-    }
 
     void DontDestroyThisObj(){
         if(obj!=null){  //if there is already one gameobject
@@ -49,15 +40,12 @@ public class EnemyAOISpawner : MonoBehaviour
     }
 
     void Update() {
-    if(Input.GetKeyUp(KeyCode.Tab))
-        Debug.Log("list count ="+enemiesList.Count);
-
         if(sceneHandler.IsInBattleScene())  return;
 
         accumulator += Time.deltaTime;
         if(accumulator> spawnPeriod){
             accumulator=0f;
-            ScanAreaOfInterest(ref count);
+            ScanAreaOfInterest();
             SpawnGroupOfEnemies(maxEnemySpawned-enemiesList.Count);
         }
     }
@@ -72,14 +60,14 @@ public class EnemyAOISpawner : MonoBehaviour
         return hit.position;
     }
 
-    void ScanAreaOfInterest(ref int count){ //the count indicate how much enemies are inside the AOI
-        count = Physics.OverlapSphereNonAlloc(player.transform.position, maxRadius, colliders, layers, QueryTriggerInteraction.Collide );
-        for(int i=0; i< count; i++){
-            if(colliders[i]!=null){
-                GameObject obj = colliders[i].gameObject;
-                if(obj.tag=="Enemy" && !enemiesList.Contains(obj))
-                    enemiesList.Add(obj);
-            }
+    void ScanAreaOfInterest(){ //the count indicate how much enemies are inside the AOI
+        enemiesList.Clear();
+
+        scannedObj = GameObject.FindGameObjectsWithTag("Enemy");
+        for(int i=0;i<scannedObj.Length;i++){
+            float dist = (scannedObj[i].transform.position-player.transform.position).magnitude;
+            if(dist > maxRadius) continue;
+            enemiesList.Add(scannedObj[i]);
         }
     }
 
@@ -96,12 +84,14 @@ public class EnemyAOISpawner : MonoBehaviour
         Vector3 pos = GetSpawnPosition();
         if(!isAdmissibleSpawnPos(pos))  return;
 
-        GameObject spanwedEnemy= Instantiate(enemy,pos,Quaternion.identity);
+        int enemyType = Random.Range(0,enemy.Length);
+        GameObject spanwedEnemy= Instantiate(enemy[enemyType],pos,Quaternion.identity);
         spanwedEnemy.SetActive(true);
-        spanwedEnemy.name+=index;
+        //spanwedEnemy.name+=index;
         spanwedEnemy.tag = "Enemy";
         spanwedEnemy.layer=LayerMask.NameToLayer("EnemyClone");
         currentEnemySpawned++;
+
         enemiesList.Add(spanwedEnemy);
 
         Debug.Log("spawned at x ="+pos.x +" y="+pos.y+" z="+pos.z);
@@ -119,4 +109,8 @@ public class EnemyAOISpawner : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(player.transform.position, maxRadius);
     }
+   
+
+// =========================Depreciated============================
+
 }

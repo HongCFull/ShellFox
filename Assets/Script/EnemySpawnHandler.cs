@@ -28,7 +28,7 @@ public class EnemySpawnHandler : MonoBehaviour
     }
 
     public void RegisterToActiveAfterTime(GameObject obj,float time){
-        StartCoroutine(SpawnObjectAfterTime(obj,time));
+      //  StartCoroutine(SpawnObjectAfterTime(obj,time));
     }
 
     IEnumerator SpawnObjectAfterTime(GameObject obj,float time){
