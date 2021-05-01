@@ -68,8 +68,6 @@ public class PreserveEnemy : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-
-
     //called by the enemy StateMachine to load the battle scene 
     public void EnemyTrigger_LoadBattleScene(){
         DontDestroyThisEnemy();

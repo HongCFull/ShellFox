@@ -7,9 +7,14 @@ public class EnergyBar : MonoBehaviour
 {
     public Slider slider;
 
-    public void SetMaxEnergy(float energy){
+    public void SetMaxAndRestoreEnergy(float energy){
         slider.maxValue = energy;
         slider.value = energy;
+    }
+
+    
+    public void SetMaxEnergy(float maxEnergy){
+        slider.maxValue = maxEnergy;
     }
 
     public void SetEnergy(float energy){

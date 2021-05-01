@@ -28,12 +28,12 @@ public class CharacterBattleAttributes : MonoBehaviour
     public float energyRecoverPeriod;
 
     [SerializeField] BattleSkill[] inspector_skills;    //It is Just for copying into skills[] for real usage, dont access it after instantiating!
-   // [HideInInspector]
+   // [HideInInspector] for these 4 attributes
     public BattleSkill[] skills;
 
-    [HideInInspector]public float currentHp;
-    [HideInInspector]public float currentEnergy;
-    [HideInInspector]public float currentIdleTime;
+    public float currentHp;
+    public float currentEnergy;
+    public float currentIdleTime;
 
     // States
     [HideInInspector]public bool inBattle;
@@ -110,7 +110,7 @@ public class CharacterBattleAttributes : MonoBehaviour
         } 
         else {  //not in battle
             if(hasTriggeredBattle){
-                ResetBattleAttributes_and_UI();
+                //ResetBattleAttributes_and_UI();
                 hasTriggeredBattle=false;
             }
         }
@@ -194,8 +194,8 @@ public class CharacterBattleAttributes : MonoBehaviour
         inBattle=false;
         timer=0;
         
-        healthBar.SetMaxHealth(maxHp);
-        energyBar.SetMaxEnergy(maxEnergy);
+        healthBar.SetMaxAndRestoreHealth(maxHp);
+        energyBar.SetMaxAndRestoreEnergy(maxEnergy);
     }
 
 
@@ -217,7 +217,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     }
 
     //should be called by player attributes and enemy attributes 
-    public void UpdateCharacterCurrentAttributes(){
+    public void UpdateCharacterCurrentAttributesWithLv(bool restore){
         //use the base attribute && current lv,exp to calculate the current hp atk def energy
         // formula : stat = (sqrt(x)+1) * lv
         lvRatio = Mathf.Sqrt(Lv)+1;
@@ -227,12 +227,22 @@ public class CharacterBattleAttributes : MonoBehaviour
         maxEnergy = baseStat.baseEnergy*lvRatio;
         attack = baseStat.baseAttack*lvRatio;  //current energy will change your atk and def
         defense = baseStat.baseDefense*lvRatio;
-
-    }//* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
+        //Set Up The UI
+        if(restore){
+            currentHp = maxHp;
+            currentEnergy = maxEnergy;
+            healthBar.SetMaxAndRestoreHealth(maxHp);
+            energyBar.SetMaxAndRestoreEnergy(maxEnergy);
+        }
+        else{
+            healthBar.SetMaxHealth(maxHp);
+            energyBar.SetMaxEnergy(maxEnergy);
+        }
+    }
 
     void ChangeAtkDefWithEnergy(){
-        attack = baseStat.baseAttack*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);  //current energy will change your atk and def
-        defense = baseStat.baseDefense*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.5f,1);
+        attack = baseStat.baseAttack*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.75f,1);  //current energy will change your atk and def
+        defense = baseStat.baseDefense*lvRatio* Mathf.Clamp((currentEnergy/maxEnergy),0.75f,1);
     }
 
     public void ReportIfCharacterIsDefeated() {
@@ -240,7 +250,6 @@ public class CharacterBattleAttributes : MonoBehaviour
             battleManager.Operation_CharacterDefeated(this);
         }
     }
-
 
 //temp bug solver : 
     public bool SkillsNotInstantiated(){

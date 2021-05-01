@@ -17,6 +17,7 @@ public class PlayerAttributes : CharacterBattleAttributes
 
     void SetPlayerCurrentAttributes(){
        // recoverPeriod = 2f;
+       Debug.Log("SetPlayerCurrentAttributes called");
         currentHp = maxHp;
         currentEnergy = maxEnergy;
         currentIdleTime = 0;
@@ -28,8 +29,8 @@ public class PlayerAttributes : CharacterBattleAttributes
         canRecover = true;
         theChosenSkillIndex=0;
 
-        healthBar.SetMaxHealth(maxHp);
-        energyBar.SetMaxEnergy(maxEnergy);
+        healthBar.SetMaxAndRestoreHealth(maxHp);
+        energyBar.SetMaxAndRestoreEnergy(maxEnergy);
         theChosenSkillIndex=0;
 
     }
@@ -122,8 +123,27 @@ public class PlayerAttributes : CharacterBattleAttributes
         //formula : exp = 25*L*L - 25L , L = (-b + sqrt(delta))/2a
         float delta = 25*25 -4*25*(-playerExperience);
         if(delta<0) return;
+        int previousLv = Lv;
         Lv = (int)((25 + Mathf.Sqrt(delta)) / (2*25));
-        UpdateCharacterCurrentAttributes();
+    
+        bool RestoreHpEnergy = Lv>previousLv;   //if lv upped ->restore health
+        UpdateCharacterCurrentAttributesWithLv(RestoreHpEnergy);
+    }
+
+    public void GainHalfHpEnergy(){
+        currentHp += maxHp/2f;
+        currentHp = Mathf.Min(currentHp,maxHp);
+
+        currentEnergy += maxEnergy/2f;
+        currentEnergy = Mathf.Min(currentEnergy,maxEnergy);
+
+        currentIdleTime = 0;
+        canMove = true;
+        inBattle=false;
+        timer=0;
+        
+        healthBar.SetHealth(currentHp);
+        energyBar.SetEnergy(currentEnergy);
     }
 
 //for file saving 

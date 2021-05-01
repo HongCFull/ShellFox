@@ -120,6 +120,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1369401865154471575, guid: c59be06ca6e882547b7e4f36a88ccec8,
         type: 3}
+    - target: {fileID: 534997504786264419, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: baseHp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997504786264419, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: baseAttack
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997504786264419, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: baseEnergy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 534997504786264419, guid: 16c5f7a21ddcb0c439c73086c97b5565,
+        type: 3}
+      propertyPath: baseDefense
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 534997504788355811, guid: 16c5f7a21ddcb0c439c73086c97b5565,
         type: 3}
       propertyPath: m_Layer

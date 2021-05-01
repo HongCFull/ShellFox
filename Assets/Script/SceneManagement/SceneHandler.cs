@@ -51,7 +51,6 @@ public class SceneHandler :MonoBehaviour
 //            Debug.Log("loading");
             yield return null;
         }
-       // yield return SceneManager.LoadSceneAsync(GetNextSceneIndex());
 
         player =GameObject.FindGameObjectWithTag("Player");
         //i used almost 1week to find out my entire system is not working bcuz of this line :))))))))))))))

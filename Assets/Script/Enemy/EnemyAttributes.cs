@@ -37,8 +37,8 @@ public class EnemyAttributes : CharacterBattleAttributes
         canMove = true;
         canRecover = true;
 
-        healthBar.SetMaxHealth(maxHp);
-        energyBar.SetMaxEnergy(maxEnergy);
+        healthBar.SetMaxAndRestoreHealth(maxHp);
+        energyBar.SetMaxAndRestoreEnergy(maxEnergy);
 
         enemySpeed = 5f;
 
@@ -48,7 +48,7 @@ public class EnemyAttributes : CharacterBattleAttributes
     public override void Start()
     {       
         base.Start();
-        UpdateCharacterCurrentAttributes();
+        UpdateCharacterCurrentAttributesWithLv(true);
         SetEnemyCurrentAttributes();
         
     }

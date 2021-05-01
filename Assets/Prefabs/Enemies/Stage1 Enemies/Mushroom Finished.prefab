@@ -188,6 +188,26 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1428911259137156888, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: baseHp
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259137156888, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: baseAttack
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259137156888, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: baseEnergy
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259137156888, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: baseDefense
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1428911259258454185, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: battleManager

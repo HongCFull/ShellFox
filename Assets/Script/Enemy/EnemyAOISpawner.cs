@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+using UnityEngine.SceneManagement;
 
 public class EnemyAOISpawner : MonoBehaviour
 {
@@ -32,6 +32,22 @@ public class EnemyAOISpawner : MonoBehaviour
     void Start() {
         DontDestroyThisObj();
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
+    }
+
+    void OnEnable() {
+        SceneManager.sceneLoaded += SpawnInitialGroupOfEnemies;
+    }
+
+    void OnDisable() {
+        SceneManager.sceneLoaded -= SpawnInitialGroupOfEnemies;
+    }
+
+    void SpawnInitialGroupOfEnemies(Scene scene, LoadSceneMode mode){
+        enemiesList.Clear();
+        Debug.Log("Called spawn init enemies");
+        SceneHandler sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
+        if(sceneHandler.IsInBattleScene(scene.name))  return;
+        StartCoroutine(SpawnGroupOfEnemies(maxEnemySpawned-enemiesList.Count,1,1f));
     }
 
     void DontDestroyThisObj(){
@@ -84,6 +100,17 @@ public class EnemyAOISpawner : MonoBehaviour
             SpawnEnemy(enemyCategory,enemyLv);
         }
     }
+
+    IEnumerator SpawnGroupOfEnemies(int toSpawn,int enemyLvs,float delay){
+        yield return new WaitForSeconds(delay);
+        Debug.Log("Spawn Gp");
+        if(toSpawn>maxEnemySpawned)    yield break;;
+        int enemyLv = Random.Range(1,enemyLvs+1);
+        Category enemyCategory = GetEnemyCategoryWithLevel(enemyLv);
+        for(int i=0; i<toSpawn ; i++){
+            SpawnEnemy(enemyCategory,enemyLv);
+        }
+    }
     
     void SpawnEnemy(Category stage,int enemyLv){
         Debug.Log("SpawnEnemy");
@@ -112,7 +139,7 @@ public class EnemyAOISpawner : MonoBehaviour
         spanwedEnemy.tag = "Enemy";
         spanwedEnemy.layer=LayerMask.NameToLayer("EnemyClone");
         spanwedEnemy.GetComponent<EnemyAttributes>().Lv = enemyLv;
-        spanwedEnemy.GetComponent<EnemyAttributes>().UpdateCharacterCurrentAttributes();
+        spanwedEnemy.GetComponent<EnemyAttributes>().UpdateCharacterCurrentAttributesWithLv(true);
         currentEnemySpawned++;
 
         enemiesList.Add(spanwedEnemy);

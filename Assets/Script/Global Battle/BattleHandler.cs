@@ -171,8 +171,8 @@ public class BattleHandler : MonoBehaviour
             BattleEndProcessed = true;
 //DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
             player.PlayerGainExp(enemy.expGainedByPlayer);
+            player.GetComponent<PlayerAttributes>().GainHalfHpEnergy();  //refill players battle data
             player.UpGradePlayerLevelAndAttributes();
-            player.ResetBattleAttributes_and_UI();  //refill players battle data
             player.HideBattleUI();  
             Destroy(defeatedChar.gameObject);   //destroy the enemy in dont destroy on load && the battle manager will reset
             StartCoroutine(sceneHandler.LoadPreviousMainSceneFromBattleAfter(loadSceneDelay));

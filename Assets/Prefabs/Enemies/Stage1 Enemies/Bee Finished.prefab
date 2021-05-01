@@ -94,6 +94,21 @@ PrefabInstance:
       propertyPath: sceneHandler
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
+        type: 3}
+      propertyPath: baseHp
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
+        type: 3}
+      propertyPath: baseAttack
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686986769254707540, guid: 6889e4ba881573340b2f6f216c14fbc4,
+        type: 3}
+      propertyPath: baseEnergy
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 2686986769256798932, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: m_Layer
