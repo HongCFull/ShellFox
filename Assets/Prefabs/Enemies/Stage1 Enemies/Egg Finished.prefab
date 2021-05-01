@@ -15,7 +15,12 @@ PrefabInstance:
     - target: {fileID: 587034437994424220, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: baseHp
-      value: 76
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 587034437994424220, guid: 9dda8f88a25508140aee8066dcf319fe,
+        type: 3}
+      propertyPath: baseAttack
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 587034437994424220, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
@@ -25,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 587034437994424220, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: baseDefense
-      value: 15
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 587034437996514332, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}

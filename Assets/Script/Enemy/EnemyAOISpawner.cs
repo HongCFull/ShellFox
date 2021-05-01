@@ -17,6 +17,8 @@ public class EnemyAOISpawner : MonoBehaviour
     public int maxEnemySpawned;
     public float spawnPeriod;
     public int maxLvDiff;
+
+    public int receviedPlayerlv;
     
    // [SerializeField] Collider[] colliders = new Collider[20];    //at most store 20 enemies
     [SerializeField] GameObject[] scannedObj;
@@ -43,11 +45,12 @@ public class EnemyAOISpawner : MonoBehaviour
     }
 
     void SpawnInitialGroupOfEnemies(Scene scene, LoadSceneMode mode){
+        receviedPlayerlv = player.GetComponent<PlayerAttributes>().Lv;
         enemiesList.Clear();
         Debug.Log("Called spawn init enemies");
         SceneHandler sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         if(sceneHandler.IsInBattleScene(scene.name))  return;
-        StartCoroutine(SpawnGroupOfEnemies(maxEnemySpawned-enemiesList.Count,1,1f));
+        StartCoroutine(SpawnGroupOfEnemies(maxEnemySpawned-enemiesList.Count,1f));
     }
 
     void DontDestroyThisObj(){
@@ -94,20 +97,20 @@ public class EnemyAOISpawner : MonoBehaviour
     void SpawnGroupOfEnemies(int toSpawn){
         Debug.Log("Spawn Gp");
         if(toSpawn>maxEnemySpawned)    return;
-        int enemyLv = GetAdmissibleEnemyLevel();
-        Category enemyCategory = GetEnemyCategoryWithLevel(enemyLv);
         for(int i=0; i<toSpawn ; i++){
+            int enemyLv = GetAdmissibleEnemyLevel();
+            Category enemyCategory = GetEnemyCategoryWithLevel(enemyLv);
             SpawnEnemy(enemyCategory,enemyLv);
         }
     }
 
-    IEnumerator SpawnGroupOfEnemies(int toSpawn,int enemyLvs,float delay){
+    IEnumerator SpawnGroupOfEnemies(int toSpawn,float delay){
         yield return new WaitForSeconds(delay);
         Debug.Log("Spawn Gp");
         if(toSpawn>maxEnemySpawned)    yield break;;
-        int enemyLv = Random.Range(1,enemyLvs+1);
-        Category enemyCategory = GetEnemyCategoryWithLevel(enemyLv);
         for(int i=0; i<toSpawn ; i++){
+            int enemyLv = GetAdmissibleEnemyLevel();
+            Category enemyCategory = GetEnemyCategoryWithLevel(enemyLv);
             SpawnEnemy(enemyCategory,enemyLv);
         }
     }
@@ -162,8 +165,12 @@ public class EnemyAOISpawner : MonoBehaviour
    
     private int GetAdmissibleEnemyLevel(){
         int playerLv = player.GetComponent<PlayerAttributes>().Lv;
-
-        return Mathf.Clamp(Random.Range(playerLv-maxLvDiff,playerLv+maxLvDiff),1,100);
+        if(playerLv<15)
+            return Mathf.Clamp(Random.Range(playerLv-1,playerLv+1),1,100);
+        else if(playerLv<40)
+            return Mathf.Clamp(Random.Range(playerLv-maxLvDiff/2,playerLv+maxLvDiff/2),1,100); 
+        else
+            return Mathf.Clamp(Random.Range(playerLv-maxLvDiff,playerLv+maxLvDiff),1,100); 
     } 
 
     private Category GetEnemyCategoryWithLevel(int lv){

@@ -235,6 +235,7 @@ MonoBehaviour:
   canMove: 0
   canRecover: 0
   theChosenSkillIndex: 0
+  DisPlayExp: 0
   playerSpeed_inBattle: 10
   playerAccel_inBattle: 2
   playerJumpSpeed_inBattle: 2
@@ -279,10 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d491e04260265f47ada1bc9d43f8a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 100
+  baseHp: 35
   baseEnergy: 100
-  baseAttack: 10000
-  baseDefense: 10
+  baseAttack: 8
+  baseDefense: 6
 --- !u!82 &1384537292
 AudioSource:
   m_ObjectHideFlags: 0

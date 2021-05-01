@@ -28,7 +28,7 @@ public class CharacterBattleAttributes : MonoBehaviour
     public float energyRecoverPeriod;
 
     [SerializeField] BattleSkill[] inspector_skills;    //It is Just for copying into skills[] for real usage, dont access it after instantiating!
-   // [HideInInspector] for these 4 attributes
+   // [HideInInspector] 
     public BattleSkill[] skills;
 
     public float currentHp;
@@ -68,6 +68,7 @@ public class CharacterBattleAttributes : MonoBehaviour
             //gameobject is gonnna be null as it is not really attached to a gameobj
         }
     }
+
 
 //only useful in update for most of the time
     bool TimeHasPassedFor(float t){
