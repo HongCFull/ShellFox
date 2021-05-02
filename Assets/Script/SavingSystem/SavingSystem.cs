@@ -9,7 +9,7 @@ public static class SavingSystem {
     public static void SavePlayer(PlayerAttributes player ){
         BinaryFormatter formatter = new BinaryFormatter();
         string saveFilePath = Application.persistentDataPath + "/shellfox.dat";
-        FileStream fileStream = new FileStream(saveFilePath,FileMode.Open);
+        FileStream fileStream = new FileStream(saveFilePath,FileMode.Create);
 
         PlayerData data =new PlayerData(player.GetCurrentExp(),new SerializableVector3(player.transform.position));
         
