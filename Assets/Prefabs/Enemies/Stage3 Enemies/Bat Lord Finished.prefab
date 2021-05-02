@@ -127,7 +127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241956932634027848}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 1.25}
+  m_LocalPosition: {x: 0, y: 1, z: 1.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3991687969348543708}
@@ -941,7 +941,7 @@ MonoBehaviour:
   attackArea: 15
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
-  randWanderingPeriod: 5
+  randWanderingPeriod: 3
 --- !u!114 &4856225256048510587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 70
-  baseEnergy: 100
+  baseEnergy: 150
   baseAttack: 40
   baseDefense: 35
 --- !u!1 &7738922732353590034
