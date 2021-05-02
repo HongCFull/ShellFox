@@ -175,6 +175,7 @@ public class EnemyStateMachine : MonoBehaviour
     
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.tag == "Player" && sceneHandler.IsInMainScene()&& triggerAccumulator>=activeTriggerBuffer){
+
             triggerAccumulator = 0f;
             AssignEnemyAttributeToBattleManager();
             SetEnemyIsInBattleState(); 
@@ -187,9 +188,12 @@ public class EnemyStateMachine : MonoBehaviour
 // The Main Finite State Reacting function
     void EnemyReactWithState(){
         if(sceneHandler.IsInMainScene()){  //MainScene StateMachine
-            if(isInHatredState){    
+            if(isInHatredState ){    
                 if(isResetingEnemyCoroutine)  // if the enemy was reseting, cancel the reset and chase the player
                     StopCoroutine(ResetCoroutine);
+
+                if(GetComponent<CapsuleCollider>().isTrigger==false)    return; //stop the enemy if it has already touched the player once!
+
                 FaceTarget(Player.position);
                 ChasePlayer();          
             }

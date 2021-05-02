@@ -150,6 +150,7 @@ public class PlayerMovement : MonoBehaviour
             ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
             footSteps.PlayJumpSFX();
+            playerAttribute.LostEnergyBy(10f);
         }
 
         //update jump animation

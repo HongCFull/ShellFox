@@ -58,6 +58,7 @@ public class SceneHandler :MonoBehaviour
         if( IsInMainScene() ){
             //spawn players and enemy in main scene
             player.transform.position = playerMainScene_TriggerPos;
+            GameObject.FindGameObjectWithTag("SavingSystem").GetComponent<TriggerSaving>().SavePlayerData();
         }
         else if(IsInBattleScene()){
             GameObject enemy = GameObject.FindGameObjectWithTag("Enemy");            

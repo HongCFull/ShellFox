@@ -25,12 +25,18 @@ public class TriggerSaving : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        if(Input.GetKeyDown(KeyCode.N)){
+        if(Input.GetKeyDown(KeyCode.N))
             SavePlayerData();
-        }
-        else if(Input.GetKeyDown(KeyCode.M)){
+        
+        if(Input.GetKeyDown(KeyCode.M))
             LoadPlayerData();
+        
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            if(sceneHandler.IsInMainScene())
+                SavePlayerData();
+            Application.Quit();
         }
+        
         UpgradeDifficultyWithStage();
     }
 

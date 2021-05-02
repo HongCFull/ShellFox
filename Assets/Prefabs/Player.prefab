@@ -224,7 +224,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 1
   m_Radius: 1
-  m_SlopeLimit: 45
+  m_SlopeLimit: 60
   m_StepOffset: 0.3
   m_SkinWidth: 0.001
   m_MinMoveDistance: 0.001
@@ -295,6 +295,7 @@ MonoBehaviour:
   canMove: 0
   canRecover: 0
   theChosenSkillIndex: 0
+  typeIcon: {fileID: 0}
   DisPlayExp: 0
   playerSpeed_inBattle: 10
   playerAccel_inBattle: 2
@@ -341,7 +342,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHp: 80
-  baseEnergy: 100
+  baseEnergy: 120
   baseAttack: 60
   baseDefense: 40
 --- !u!82 &1384537292
@@ -486,7 +487,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5978818783223570366}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.05, y: 2.15, z: 2.41}
+  m_LocalPosition: {x: 1.13, y: 1.68, z: 2.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1571144040}
@@ -654,7 +655,7 @@ PrefabInstance:
     - target: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.065
+      value: 1.49
       objectReference: {fileID: 0}
     - target: {fileID: 4147013767707927942, guid: dc6787ba05f043e4fb60fc3284fb9d46,
         type: 3}
