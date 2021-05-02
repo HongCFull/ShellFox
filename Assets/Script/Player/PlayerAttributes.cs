@@ -8,6 +8,7 @@ public class PlayerAttributes : CharacterBattleAttributes
 
     [HideInInspector] public static float playerExperience;
     [HideInInspector]public int theChosenSkillIndex;
+    public GameObject typeIcon;
     public float DisPlayExp;
     //accesed by the playerMovement script while battling 
     public float playerSpeed_inBattle;
@@ -65,7 +66,7 @@ public class PlayerAttributes : CharacterBattleAttributes
     void UpdatePlayerBattleUIandState(){
         if (inBattle) {
             //Debug.Log("current energy = " + currentEnergy);
-
+            typeIcon.SetActive(true);
             ShowBattleUI();
             if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)) {
                 if (canMove) {
@@ -79,6 +80,7 @@ public class PlayerAttributes : CharacterBattleAttributes
         } else {
             healthBar.gameObject.SetActive(false);
             energyBar.gameObject.SetActive(false);
+            typeIcon.SetActive(false);
         }
     }
 
