@@ -11,6 +11,7 @@ TagManager:
   - EnemySpawnHandler
   - SavingSystem
   - EnemyClone
+  - BattleBGMHandler
   layers:
   - Default
   - TransparentFX

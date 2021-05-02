@@ -5,9 +5,12 @@ using UnityEngine;
 public class BattleSceneBGMPlayer : MonoBehaviour
 {
     public AudioClip[] clips;
+    public AudioClip victorySFX;
+    public AudioClip defeatSFX;
     AudioSource audioSource;
     [Tooltip("Best so far around 0.02-0.035")][Range(0f,0.05f)]  public float volume;
     [Range(0.1f,5f)]  public float transitionTime;
+
 
     void Start(){
         audioSource = GetComponent<AudioSource>();
@@ -23,4 +26,24 @@ public class BattleSceneBGMPlayer : MonoBehaviour
         audioSource.volume += volume*Time.deltaTime/transitionTime;
     }
 
+    public void PlayVictorSFX(){
+        audioSource.Stop();
+        audioSource.PlayOneShot(victorySFX);
+    }
+
+    public void PlayDefeatSFX(){
+        audioSource.Stop();
+        audioSource.PlayOneShot(defeatSFX);
+    }
+
+    public float GetVictorySFXLength(){
+        return victorySFX.length;
+    }
+
+    public float GetDefeatSFXLength(){
+        return defeatSFX.length;
+    }
+
 }
+
+

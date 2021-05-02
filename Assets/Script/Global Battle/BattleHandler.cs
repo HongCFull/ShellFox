@@ -14,7 +14,7 @@ public class BattleHandler : MonoBehaviour
     [SerializeField] SceneHandler sceneHandler;
 
     bool BattleEndProcessed;
-    private float loadSceneDelay = 3f;  //Note: this variable should only be set inside the script
+    private float loadSceneDelay = 1f;  //Note: this variable should only be set inside the script
 
     void Start(){
         sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
@@ -164,34 +164,38 @@ public class BattleHandler : MonoBehaviour
     }
 
     public bool Operation_CharacterDefeated(CharacterBattleAttributes defeatedChar){
-        if (BattleEndProcessed) return false;
+        if (BattleEndProcessed) return false;   //early exist if processed once before
+
         if(defeatedChar.GetType() == typeof(EnemyAttributes)){     //enemy is defeated
             BattleEndProcessed = true;
-//DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
+    //DefeatedEnemyNameList.Add(defeatedChar.gameObject.name);    //record the name of this enemy for spawning function
             player.PlayerGainExp(enemy.expGainedByPlayer);
             player.GetComponent<PlayerAttributes>().GainHalfHpEnergy();  //refill players battle data
             player.UpGradePlayerLevelAndAttributes();
             player.HideBattleUI();  
             Destroy(defeatedChar.gameObject);   //destroy the enemy in dont destroy on load && the battle manager will reset
-            StartCoroutine(sceneHandler.LoadPreviousMainSceneFromBattleAfter(loadSceneDelay));
+            BattleSceneBGMPlayer BGMPlayer = GameObject.FindGameObjectWithTag("BattleBGMHandler").GetComponent<BattleSceneBGMPlayer>();
+            BGMPlayer.PlayVictorSFX();
+            float delay = BGMPlayer.GetVictorySFXLength() +loadSceneDelay;
+            StartCoroutine(sceneHandler.LoadPreviousMainSceneFromBattleAfter(delay));
 
         }
     //NOT IMPLEMENTED IF THE PLAYER IS DEFEATED!
         else if(defeatedChar.GetType() == typeof(PlayerAttributes)){   //player is defeated
             BattleEndProcessed = true;
-          //  player.enabled = false;
+
             enemy.ResetBattleAttributes_and_UI();
             player.ResetBattleAttributes_and_UI();  //refill players battle data
             player.HideBattleUI();
             
             enemy = null;
             player = null;
-            
-            //defeatedChar.gameObject.SetActive(false);
+
+            BattleSceneBGMPlayer BGMPlayer = GameObject.FindGameObjectWithTag("BattleBGMHandler").GetComponent<BattleSceneBGMPlayer>();
+            BGMPlayer.PlayDefeatSFX();
+            float delay = BGMPlayer.GetDefeatSFXLength() +loadSceneDelay;
+
             StartCoroutine(sceneHandler.RestorePlayerMainSceneFromLastSave(loadSceneDelay));
-           // defeatedChar.gameObject.SetActive(true);
-          //  player.enabled = true;
-            Debug.Log("YOU LOSE!!!!");
         }
         return false;
     }

@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 2.1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 566cc8e80ca8fe5449dfb0f0dfc4ba37, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: bf08f096a9085f04b8de3957d6aa80f2, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.094171904, g: 0.13110355, b: 0.2743114, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4608,7 +4608,7 @@ GameObject:
   - component: {fileID: 1439511425}
   m_Layer: 0
   m_Name: MusicSystem_BattleScene
-  m_TagString: Untagged
+  m_TagString: BattleBGMHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4632,6 +4632,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6657429f189f43243a194d59293c6cad, type: 3}
   - {fileID: 8300000, guid: d77302f3f70888f4991d6a6967706df9, type: 3}
   - {fileID: 8300000, guid: ca5ac818877e19048a5c32add11de512, type: 3}
+  victorySFX: {fileID: 8300000, guid: a96f7df16db74e3478f5ab3a19ded378, type: 3}
+  defeatSFX: {fileID: 8300000, guid: d380bb00e26dddf499d9ea303a720c1e, type: 3}
   volume: 0.02
   transitionTime: 5
 --- !u!82 &1439511426
