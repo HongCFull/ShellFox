@@ -260,9 +260,9 @@ MonoBehaviour:
   - {fileID: 341321837498260043, guid: f38cd467c0b30704aa13b1ff0b7db960, type: 3}
   maxRadius: 100
   player: {fileID: 1384537285}
-  maxEnemySpawned: 15
+  maxEnemySpawned: 10
   spawnPeriod: 20
-  maxLvDiff: 2
+  maxLvDiff: 3
   scannedObj: []
   enemiesList: []
   layers:
@@ -2242,6 +2242,14 @@ PrefabInstance:
       propertyPath: inspector_skills.Array.data[4]
       value: 
       objectReference: {fileID: 853520258}
+    - target: {fileID: 1413486208, guid: edf490932e409634eb594b5865ad1d10, type: 3}
+      propertyPath: movementSpeed
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1413486208, guid: edf490932e409634eb594b5865ad1d10, type: 3}
+      propertyPath: runMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1571144040, guid: edf490932e409634eb594b5865ad1d10, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.49

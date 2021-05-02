@@ -599,9 +599,9 @@ MonoBehaviour:
     m_Bits: 1
   objects: []
   visionFrom: {fileID: 2336045474263513933}
-  ConeAngle: 90
-  ConeHeight: 15.3
-  ConeRadius: 20.8
+  ConeAngle: 91
+  ConeHeight: 20
+  ConeRadius: 13
   segments: 20
   eyeRayWidth: 1
   meshColor: {r: 1, g: 0.8031938, b: 0, a: 1}

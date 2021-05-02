@@ -84,13 +84,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2686986767238957244, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
+      propertyPath: ConeAngle
+      value: 91
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686986767238957244, guid: 6889e4ba881573340b2f6f216c14fbc4,
+        type: 3}
       propertyPath: ConeHeight
-      value: 15.6
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2686986767238957244, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: ConeRadius
-      value: 20
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2686986767238957244, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}

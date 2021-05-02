@@ -514,7 +514,7 @@ MonoBehaviour:
   objects: []
   visionFrom: {fileID: 3816377667455490812}
   ConeAngle: 90
-  ConeHeight: 15.9
+  ConeHeight: 20
   ConeRadius: 20.9
   segments: 20
   eyeRayWidth: 1

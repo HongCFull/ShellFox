@@ -202,13 +202,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
+      propertyPath: ConeAngle
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
+        type: 3}
       propertyPath: ConeHeight
-      value: 15.3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
       propertyPath: ConeRadius
-      value: 20.5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 587034439737532020, guid: 9dda8f88a25508140aee8066dcf319fe,
         type: 3}
