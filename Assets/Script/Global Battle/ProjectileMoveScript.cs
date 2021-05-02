@@ -33,14 +33,14 @@ public class ProjectileMoveScript : MonoBehaviour {
 			accuracy = 1 - (accuracy / 100);
 
 			for (int i = 0; i < 2; i++) {
-				var val = 1 * Random.Range (-accuracy, accuracy);
+				var val = 1 * Random.Range (-accuracy, accuracy);	//apply inaccuracy 
 				var index = Random.Range (0, 2);
 				if (i == 0) {
-					if (index == 0)
-						offset = new Vector3 (0, -val, 0);
+					if (index == 0)			//inaccuracy applied in vertical dir
+						offset = new Vector3 (0, -val, 0);	
 					else
 						offset = new Vector3 (0, val, 0);
-				} else {
+				} else {					//horizontal dir
 					if (index == 0)
 						offset = new Vector3 (0, offset.y, -val);
 					else

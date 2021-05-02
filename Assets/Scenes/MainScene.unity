@@ -2191,7 +2191,7 @@ PrefabInstance:
         type: 3}
       propertyPath: EffectToSpawn
       value: 
-      objectReference: {fileID: 1391574063814312, guid: 68a0ef4dcae9aa14687734d594059d40,
+      objectReference: {fileID: 1746672929845058, guid: db5608cc982a3544882c10440997ffdc,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 072b3eaaba159914584ca7d9ea0f49b7, type: 3}
