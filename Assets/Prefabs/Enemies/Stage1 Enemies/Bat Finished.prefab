@@ -368,6 +368,11 @@ PrefabInstance:
       propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5231867903593786251, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: occlusionLayer.m_Bits
+      value: 8193
+      objectReference: {fileID: 0}
     - target: {fileID: 5231867903736260128, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: m_Layer
@@ -405,6 +410,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
         type: 3}
+    - target: {fileID: 5231867904981665276, guid: 1e6b8da56d870004da7bb19953fa6bb0,
+        type: 3}
+      propertyPath: aimHeightOffset
+      value: 0.7
+      objectReference: {fileID: 0}
     - target: {fileID: 5231867905008020734, guid: 1e6b8da56d870004da7bb19953fa6bb0,
         type: 3}
       propertyPath: m_Layer

@@ -7,7 +7,6 @@ public class EnemyFire : MonoBehaviour
     [SerializeField] BattleHandler BattleManager;
     public Transform bulletStartPos;
     [Tooltip("This indicate the height of the position that hit the player")]
-    public float aimHeightOffset;   
     // reference to the chosen skill for choosing the gameEffect object 
     private EnemyAttributes enemy;  //used to get the chosen battle skill
 
@@ -54,11 +53,13 @@ public class EnemyFire : MonoBehaviour
     void CreateVFXObject(){
       //  Create the effect object and assign the proper rotation
         if(effectToSpawn!=null){
-            GameObject vfx = Instantiate (effectToSpawn, bulletStartPos.position, Quaternion.identity);
+
             Vector3 playerPos = enemy.battleManager.player.transform.position;
             Vector3 direction = playerPos - bulletStartPos.position;
-          
-            vfx.transform.localRotation=Quaternion.LookRotation(direction.normalized);
+            direction.y+=Random.Range(0.5f,0.8f);
+
+            GameObject vfx = Instantiate (effectToSpawn, bulletStartPos.position, Quaternion.LookRotation(direction.normalized));
+//            vfx.transform.localRotation=Quaternion.LookRotation(direction.normalized);
             vfx.GetComponent<ProjectileMoveScript>().damage = BattleManager.GetSkillDamageToTarget(enemy.skills[enemy.GetSkillIndex()],TargetIs.PLAYER);
         }
         else{

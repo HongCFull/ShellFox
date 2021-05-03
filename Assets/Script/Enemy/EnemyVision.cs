@@ -68,6 +68,7 @@ public class EnemyVision : MonoBehaviour
         Vector3 originRight = transform.position;
         originRight.x += eyeRayWidth;
 
+
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest- origin;
         

@@ -448,7 +448,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   occlusionLayer:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8193
   objects: []
   visionFrom: {fileID: 1468077393149638521}
   ConeAngle: 90

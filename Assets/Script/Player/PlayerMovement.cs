@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public PlayerAiming aim;
     private FootSteps footSteps;
 
-
     //for player wasd movement
     CharacterController controller;
     public float movementSpeed;
@@ -21,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float gravity ;
     [SerializeField] private LayerMask groundMask;
     bool headHitSomething=false;
+    private SceneHandler sceneHandler;
 
     //for original version
     float orignialSpeed;
@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         ani = GetComponentInChildren<Animator>();
         aim = GetComponent<PlayerAiming>();
         footSteps = GetComponent<FootSteps>();
+        sceneHandler = GameObject.FindGameObjectWithTag("SceneHandler").GetComponent<SceneHandler>();
         enterJump = false;
         RecordOriginalAttribute();
     }
@@ -150,7 +151,9 @@ public class PlayerMovement : MonoBehaviour
             ani.SetBool("isJumping", enterJump);
             velocity.y = Mathf.Sqrt(jumpSpeed * -2f * gravity);
             footSteps.PlayJumpSFX();
-            playerAttribute.LostEnergyBy(10f);
+            
+            if(sceneHandler.IsInBattleScene()&&playerAttribute.inBattle)
+                playerAttribute.LostEnergyBy(10f);
         }
 
         //update jump animation

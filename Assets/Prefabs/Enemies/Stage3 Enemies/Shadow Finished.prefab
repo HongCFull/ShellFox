@@ -236,7 +236,6 @@ MonoBehaviour:
   BattleManager: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
     type: 3}
   bulletStartPos: {fileID: 5271072105580604923}
-  aimHeightOffset: 0.9
 --- !u!54 &5855243510997573089
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -279,10 +278,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d491e04260265f47ada1bc9d43f8a31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHp: 85
+  baseHp: 100
   baseEnergy: 150
-  baseAttack: 35
-  baseDefense: 50
+  baseAttack: 65
+  baseDefense: 65
 --- !u!1 &615766678340590216
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public static class SavingSystem {
         formatter.Serialize(fileStream,data);
         fileStream.Close();
 
-        Debug.Log("written in file ");
+        Debug.Log("written in file "+saveFilePath);
     }
 
     public static PlayerData LoadPlayer(){

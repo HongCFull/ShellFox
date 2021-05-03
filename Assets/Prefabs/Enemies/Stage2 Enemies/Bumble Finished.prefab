@@ -605,7 +605,6 @@ MonoBehaviour:
   BattleManager: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
     type: 3}
   bulletStartPos: {fileID: 6822111634511982551}
-  aimHeightOffset: 0.9
 --- !u!54 &5641977603302369731
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -650,7 +649,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHp: 68
   baseEnergy: 120
-  baseAttack: 50
+  baseAttack: 62
   baseDefense: 30
 --- !u!1 &4965774599335473456
 GameObject:

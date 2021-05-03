@@ -404,6 +404,11 @@ PrefabInstance:
       propertyPath: objects.Array.data[5]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
+      propertyPath: occlusionLayer.m_Bits
+      value: 8193
+      objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102322, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: m_Layer
