@@ -328,7 +328,7 @@ MonoBehaviour:
   isAccel: 0
   canMove: 1
   canRecover: 0
-  enemySpeed: 10
+  enemySpeed: 7
   attackArea: 8
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
@@ -392,8 +392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHp: 85
   baseEnergy: 130
-  baseAttack: 68
-  baseDefense: 50
+  baseAttack: 70
+  baseDefense: 65
 --- !u!1 &6273465075726382671
 GameObject:
   m_ObjectHideFlags: 0

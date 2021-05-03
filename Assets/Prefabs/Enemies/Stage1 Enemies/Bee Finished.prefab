@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 2686986767238957244, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
       propertyPath: occlusionLayer.m_Bits
-      value: 8193
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2686986767238957246, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}
@@ -218,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: attackArea
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2686986769334589157, guid: 6889e4ba881573340b2f6f216c14fbc4,
+        type: 3}
+      propertyPath: enemySpeed
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 2686986769334589157, guid: 6889e4ba881573340b2f6f216c14fbc4,
         type: 3}

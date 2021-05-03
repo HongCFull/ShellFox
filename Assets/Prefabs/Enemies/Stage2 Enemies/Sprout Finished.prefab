@@ -141,7 +141,7 @@ MonoBehaviour:
   isAccel: 0
   canMove: 1
   canRecover: 0
-  enemySpeed: 10
+  enemySpeed: 5
   attackArea: 17
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5

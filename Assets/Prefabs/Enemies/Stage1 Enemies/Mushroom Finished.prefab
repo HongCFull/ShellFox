@@ -295,6 +295,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259258454185, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
+      propertyPath: enemySpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428911259258454185, guid: 8e975cc9e643f524a93297a5d0c48908,
+        type: 3}
       propertyPath: battleManager
       value: 
       objectReference: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
@@ -407,7 +412,7 @@ PrefabInstance:
     - target: {fileID: 1428911259541102320, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}
       propertyPath: occlusionLayer.m_Bits
-      value: 8193
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1428911259541102322, guid: 8e975cc9e643f524a93297a5d0c48908,
         type: 3}

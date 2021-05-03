@@ -2248,7 +2248,7 @@ MonoBehaviour:
   isAccel: 0
   canMove: 1
   canRecover: 0
-  enemySpeed: 10
+  enemySpeed: 7.5
   attackArea: 7
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
@@ -2313,7 +2313,7 @@ MonoBehaviour:
   baseHp: 78
   baseEnergy: 125
   baseAttack: 70
-  baseDefense: 50
+  baseDefense: 55
 --- !u!1 &3598662645326435857
 GameObject:
   m_ObjectHideFlags: 0

@@ -62,13 +62,6 @@ public class EnemyVision : MonoBehaviour
     public bool CanSee(GameObject obj){
         Vector3 origin = transform.position;
 
-        Vector3 originLeft = transform.position;
-        originLeft.x-=eyeRayWidth;      // TEMPORARYLY indicates left right
-
-        Vector3 originRight = transform.position;
-        originRight.x += eyeRayWidth;
-
-
         Vector3 dest = obj.transform.position;
         Vector3 direction = dest- origin;
         
@@ -85,9 +78,7 @@ public class EnemyVision : MonoBehaviour
 
             dest.y = origin.y;  // check in the horizontal level of the eye
             if((dest-origin).magnitude>ConeRadius ||
-                Physics.Linecast(origin, dest, occlusionLayer) ||       //if pass 3 eye ray check (left mid right) , then enemy can see the player
-                Physics.Linecast(originLeft, dest, occlusionLayer) ||
-                Physics.Linecast(originRight, dest, occlusionLayer) ){
+                Physics.Linecast(origin, dest, occlusionLayer)){
 
                 return false;
             }

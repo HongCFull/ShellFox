@@ -40,8 +40,6 @@ public class EnemyAttributes : CharacterBattleAttributes
         healthBar.SetMaxAndRestoreHealth(maxHp);
         energyBar.SetMaxAndRestoreEnergy(maxEnergy);
 
-        enemySpeed = 5f;
-
     }
 
     

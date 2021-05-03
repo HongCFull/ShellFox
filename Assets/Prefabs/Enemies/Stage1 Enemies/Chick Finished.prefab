@@ -596,7 +596,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   occlusionLayer:
     serializedVersion: 2
-    m_Bits: 8193
+    m_Bits: 1
   objects: []
   visionFrom: {fileID: 2336045474263513933}
   ConeAngle: 91
@@ -821,7 +821,7 @@ MonoBehaviour:
   isAccel: 0
   canMove: 1
   canRecover: 0
-  enemySpeed: 10
+  enemySpeed: 5
   attackArea: 13
   expGainedByPlayer: 20
   distanceAwayFromPlayer: 5
@@ -841,7 +841,6 @@ MonoBehaviour:
   BattleManager: {fileID: 8261714312891726205, guid: 585f8a459c648d34a8467e958e565dae,
     type: 3}
   bulletStartPos: {fileID: 9206582032537889897}
-  aimHeightOffset: 0.9
 --- !u!54 &2797904083004967123
 Rigidbody:
   m_ObjectHideFlags: 0

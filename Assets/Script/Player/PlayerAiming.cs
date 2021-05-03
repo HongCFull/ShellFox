@@ -98,7 +98,7 @@ public class PlayerAiming : MonoBehaviour
 
     void UpdateBulletTargetPosition(){
     
-        if(Physics.Raycast(ray, out hitInfo)&& ! (hitInfo.point.z<transform.position.z)){  
+        if(Physics.Raycast(ray, out hitInfo)&& ! (hitInfo.point.z<transform.position.z)){  //aim behind
             bulletTarget.position = hitInfo.point;
         }
         else{
