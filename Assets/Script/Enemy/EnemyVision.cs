@@ -84,9 +84,7 @@ public class EnemyVision : MonoBehaviour
 
             dest.y = origin.y;  // check in the horizontal level of the eye
             if((dest-origin).magnitude>ConeRadius ||
-                Physics.Linecast(origin, dest, occlusionLayer) ||       //if pass 3 eye ray check (left mid right) , then enemy can see the player
-                Physics.Linecast(originLeft, dest, occlusionLayer) ||
-                Physics.Linecast(originRight, dest, occlusionLayer) ){
+                Physics.Linecast(origin, dest, occlusionLayer)){
 
                 return false;
             }
@@ -196,7 +194,7 @@ public class EnemyVision : MonoBehaviour
     }
    
 // ENABLE to highlight the gameObject which are seen by the enemy
-/*
+
      private void OnDrawGizmos() {
          if(mesh){
              Gizmos.color=meshColor;
@@ -213,5 +211,5 @@ public class EnemyVision : MonoBehaviour
              Gizmos.DrawSphere(obj.transform.position , 0.4f);
          }
      }
-*/
+
 }
